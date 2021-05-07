@@ -1,0 +1,693 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>JavaScript Application Bundle &#8212; CCF  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Build and Sign CCF Applications" href="build_app.html" />
+    <link rel="prev" title="TypeScript Application using tsoa" href="js_app_tsoa.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/ccf.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../overview/index.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Build Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../use_apps/index.html">
+  Use Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../operations/index.html">
+  Operations
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../governance/index.html">
+  Governance
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../audit/index.html">
+  Audit
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contribute/index.html">
+  Contribute
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../glossary.html">
+  Glossary
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/Microsoft/CCF" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="create_vm.html">
+   Create Azure SGX VM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="install_bin.html">
+   Install CCF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="build_setup.html">
+   CCF Development Setup
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="example.html">
+   C++ Application
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logging_cpp.html">
+     Logging (C++)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logging_rpc_api.html">
+     Logging RPC API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logging.html">
+     Logging
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="js_app.html">
+   JavaScript Application
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="js_app_ts.html">
+     TypeScript Application
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="js_app_tsoa.html">
+     TypeScript Application using tsoa
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="current reference internal" href="#">
+     JavaScript Application Bundle
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="js_app_ts.html">
+       TypeScript Application
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="js_app_tsoa.html">
+       TypeScript Application using tsoa
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="build_app.html">
+   Build and Sign CCF Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="run_app.html">
+   Running CCF Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="demo.html">
+   End-to-end demo
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="auth/index.html">
+   User Authentication
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="auth/jwt.html">
+     JWT Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="auth/cert.html">
+     Certificate Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="auth/jwt_ms_example.html">
+     JWT Authentication example using Microsoft Identity Platform
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="kv/index.html">
+   Key-Value Store
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="kv/kv_how_to.html">
+     Key-Value Store How-To
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="kv/kv_serialisation.html">
+     Key-Value Serialisation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="kv/api.html">
+     Key-Value Store API
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="upgrading_app.html">
+   Upgrade Your Application
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api.html">
+   Developer API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="crypto.html">
+   Cryptography API
+  </a>
+ </li>
+</ul>
+
+  </div>
+
+  
+  <h6> Versions </h6>
+  <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+      <option value="../../main/build_apps/js_app_bundle.html">main </option>
+      <option value="js_app_bundle.html">ccf-1.0.0 </option>
+  </select>
+  
+</nav><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#folder-layout">
+   Folder Layout
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metadata">
+   Metadata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#javascript-api">
+   JavaScript API
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#globals">
+     Globals
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#endpoint-handlers">
+     Endpoint handlers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deployment">
+   Deployment
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/build_apps/js_app_bundle.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="javascript-application-bundle">
+<h1>JavaScript Application Bundle<a class="headerlink" href="#javascript-application-bundle" title="Permalink to this headline">¶</a></h1>
+<p>The native format for JavaScript applications in CCF is a JavaScript application bundle, or short app bundle.
+A bundle can be wrapped directly into a governance proposal for deployment.</p>
+<p>This page documents the components of a bundle and the JavaScript API available for developing endpoints.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Modern JavaScript app development typically makes use of
+<a class="reference external" href="https://nodejs.org/">Node.js</a>,
+<a class="reference external" href="https://www.npmjs.com/">npm</a>, and
+<a class="reference external" href="https://www.typescriptlang.org/">TypeScript</a>.
+CCF provides multiple example apps built with these tools.
+They involve a <cite>build</cite> step that generates an app bundle suitable for CCF.
+See the following pages for more details:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="js_app_ts.html">TypeScript Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="js_app_tsoa.html">TypeScript Application using tsoa</a></li>
+</ul>
+</div>
+</div>
+<section id="folder-layout">
+<h2>Folder Layout<a class="headerlink" href="#folder-layout" title="Permalink to this headline">¶</a></h2>
+<p>A bundle has the following folder structure:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tree --dirsfirst my-app
+my-app
+├── src
+│   └── app.js
+└── app.json
+</pre></div>
+</div>
+<p>It consists of <a class="reference internal" href="#metadata"><span class="std std-ref">metadata</span></a> (<code class="docutils literal notranslate"><span class="pre">app.json</span></code>) and one or more <a class="reference internal" href="#javascript-api"><span class="std std-ref">JavaScript modules</span></a> (<code class="docutils literal notranslate"><span class="pre">src/</span></code>).
+JavaScript modules can <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">import</a> other modules using relative path names.</p>
+<p>You can find an example app bundle in the
+<a class="reference external" href="https://github.com/microsoft/CCF/tree/main/tests/js-app-bundle">tests/js-app-bundle</a>
+folder of the CCF git repository.</p>
+</section>
+<section id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">app.json</span></code> file of an app bundle has the following structure:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;endpoints&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;/foo&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;post&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;js_module&quot;</span><span class="o">:</span> <span class="s2">&quot;app.js&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;js_function&quot;</span><span class="o">:</span> <span class="s2">&quot;foo_post&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;forwarding_required&quot;</span><span class="o">:</span> <span class="s2">&quot;never&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;authn_policies&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;user_cert&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;readonly&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;openapi&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="p">...</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="p">...</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;endpoints&quot;</span></code> contains endpoint descriptions nested by REST API URL and HTTP method.
+Each endpoint object contains the following information:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;js_module&quot;</span></code>: The path to the module containing the endpoint handler, relative to the <code class="docutils literal notranslate"><span class="pre">src/</span></code> folder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;js_function&quot;</span></code>: The name of the endpoint handler function. This must be the name of a function exported by
+the <code class="docutils literal notranslate"><span class="pre">js_module</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;authn_policies&quot;</span></code>: A list of <a class="reference internal" href="auth/index.html#user-authentication"><span class="std std-ref">authentication policies</span></a> to be applied before the endpoint
+is executed. An empty list indicates an unauthenticated endpoint which can be called by anyone. Possible entries are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;user_cert&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;user_signature&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;member_cert&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;member_signature&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;jwt&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;no_auth&quot;</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;forwarding_required&quot;</span></code>: A string indicating whether the endpoint is always forwarded, or whether it is safe to sometimes execute on followers. Possible values are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;always&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;sometimes&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;never&quot;</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;mode&quot;</span></code>: A string indicating whether the endpoint requires read/write or read-only access to the Key-Value Store, or whether it is a historical endpoint that sees the state written in a specific transaction. Possible values are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;readwrite&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;readonly&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;historical&quot;</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;openapi&quot;</span></code>:  An <a class="reference external" href="https://swagger.io/specification/#operation-object">OpenAPI Operation Object</a>
+without <a class="reference external" href="https://swagger.io/specification/#reference-object">references</a>. This is descriptive but not
+enforced - it will be inserted into the generated OpenAPI document for this service, but will not restrict the
+types of the endpoint’s requests or responses.</p></li>
+</ul>
+<p>You can find an example metadata file at
+<a class="reference external" href="https://github.com/microsoft/CCF/tree/main/tests/js-app-bundle/app.json">tests/js-app-bundle/app.json</a>
+in the CCF git repository.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See the <a class="reference internal" href="js_app_tsoa.html#typescript-application-using-tsoa"><span class="std std-ref">tsoa-based app example</span></a> on how to generate OpenAPI definitions with TypeScript.</p>
+</div>
+</section>
+<section id="javascript-api">
+<h2>JavaScript API<a class="headerlink" href="#javascript-api" title="Permalink to this headline">¶</a></h2>
+<section id="globals">
+<h3>Globals<a class="headerlink" href="#globals" title="Permalink to this headline">¶</a></h3>
+<p>JavaScript provides a set of built-in
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">global functions, objects, and values</a>.</p>
+<p>CCF provides the additional global variable <code class="docutils literal notranslate"><span class="pre">ccf</span></code> to access native CCF functionality.
+It is an object implementing the <a class="reference external" href="../js/ccf-app/interfaces/global.ccf.html"><code class="xref docutils literal notranslate"><span class="pre">CCF</span></code></a> interface.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API">Web APIs</a> are not available.</p>
+</div>
+</section>
+<section id="endpoint-handlers">
+<h3>Endpoint handlers<a class="headerlink" href="#endpoint-handlers" title="Permalink to this headline">¶</a></h3>
+<p>An endpoint handler is an exported function that receives a <a class="reference external" href="../js/ccf-app/interfaces/endpoints.request.html"><code class="xref docutils literal notranslate"><span class="pre">Request</span></code></a> object, returns a <a class="reference external" href="../js/ccf-app/interfaces/endpoints.response.html"><code class="xref docutils literal notranslate"><span class="pre">Response</span></code></a> object, and is referenced in the <code class="docutils literal notranslate"><span class="pre">app.json</span></code> file of the app bundle (see above).</p>
+<p>See the following handler from the example app bundle in the
+<a class="reference external" href="https://github.com/microsoft/CCF/tree/main/tests/js-app-bundle">tests/js-app-bundle</a>
+folder of the CCF git repository.
+It validates the request body and returns the result of a mathematical operation:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">compute_impl</span><span class="p">(</span><span class="nx">op</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">op</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">)</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">left</span> <span class="o">+</span> <span class="nx">right</span><span class="p">;</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">op</span> <span class="o">==</span> <span class="s2">&quot;sub&quot;</span><span class="p">)</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">left</span> <span class="o">-</span> <span class="nx">right</span><span class="p">;</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">op</span> <span class="o">==</span> <span class="s2">&quot;mul&quot;</span><span class="p">)</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">left</span> <span class="o">*</span> <span class="nx">right</span><span class="p">;</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">statusCode</span><span class="o">:</span> <span class="mf">400</span><span class="p">,</span>
+      <span class="nx">body</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">error</span><span class="o">:</span> <span class="s2">&quot;unknown op&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">body</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">result</span><span class="o">:</span> <span class="nx">result</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">compute</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">body</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">body</span><span class="p">.</span><span class="nx">left</span> <span class="o">!=</span> <span class="s2">&quot;number&quot;</span> <span class="o">||</span> <span class="k">typeof</span> <span class="nx">body</span><span class="p">.</span><span class="nx">right</span> <span class="o">!=</span> <span class="s2">&quot;number&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">statusCode</span><span class="o">:</span> <span class="mf">400</span><span class="p">,</span>
+      <span class="nx">body</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">error</span><span class="o">:</span> <span class="s2">&quot;invalid operand type&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">compute_impl</span><span class="p">(</span><span class="nx">body</span><span class="p">.</span><span class="nx">op</span><span class="p">,</span> <span class="nx">body</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">body</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">compute2</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span>
+
+  <span class="c1">// Type of params is always string. Try to parse as float</span>
+  <span class="kd">let</span> <span class="nx">left</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">left</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">statusCode</span><span class="o">:</span> <span class="mf">400</span><span class="p">,</span>
+      <span class="nx">body</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">error</span><span class="o">:</span> <span class="s2">&quot;left operand is not a parseable number&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="kd">let</span> <span class="nx">right</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">right</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">statusCode</span><span class="o">:</span> <span class="mf">400</span><span class="p">,</span>
+      <span class="nx">body</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">error</span><span class="o">:</span> <span class="s2">&quot;right operand is not a parseable number&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">compute_impl</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">op</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See the <a class="reference internal" href="js_app_tsoa.html#typescript-application-using-tsoa"><span class="std std-ref">tsoa-based app example</span></a> on how to automatically validate
+JSON request data using TypeScript types.</p>
+</div>
+</section>
+</section>
+<section id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
+<p>An app bundle can be wrapped into a governance proposal with the Python client for deployment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -m ccf.proposal_generator set_js_app my-app/
+SUCCESS <span class="p">|</span> Writing proposal to ./set_js_app_proposal.json
+SUCCESS <span class="p">|</span> Wrote vote to ./set_js_app_vote_for.json
+</pre></div>
+</div>
+<p>Once <a class="reference internal" href="../governance/proposals.html#submitting-a-new-proposal"><span class="std std-ref">submitted and accepted</span></a>, a <code class="docutils literal notranslate"><span class="pre">set_js_app</span></code> proposal atomically (re-)deploys the complete JavaScript application.
+Any existing application endpoints and JavaScript modules are removed.</p>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="js_app_tsoa.html" title="previous page">TypeScript Application using tsoa</a>
+    <a class='right-next' id="next-link" href="build_app.html" title="next page">Build and Sign CCF Applications</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018, Microsoft Research.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

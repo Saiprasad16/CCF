@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Governance &#8212; CCF  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Consensus Protocols" href="consensus.html" />
+    <link rel="prev" title="CCF release and support policy" href="release_policy.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/ccf.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../build_apps/index.html">
+  Build Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../use_apps/index.html">
+  Use Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../operations/index.html">
+  Operations
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../governance/index.html">
+  Governance
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../audit/index.html">
+  Audit
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contribute/index.html">
+  Contribute
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../glossary.html">
+  Glossary
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/Microsoft/CCF" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="concepts.html">
+   Concepts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="release_policy.html">
+   CCF release and support policy
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Governance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="consensus.html">
+   Consensus Protocols
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cryptography.html">
+   Cryptography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="performance.html">
+   Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="threading.html">
+   Threading
+  </a>
+ </li>
+</ul>
+
+  </div>
+
+  
+  <h6> Versions </h6>
+  <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+      <option value="governance.html">main </option>
+      <option value="../../ccf-1.0.0/overview/governance.html">ccf-1.0.0 </option>
+  </select>
+  
+</nav><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models">
+   Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-member-operators">
+     Non-member operators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operating-members">
+     Operating members
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/overview/governance.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="governance">
+<h1>Governance<a class="headerlink" href="#governance" title="Permalink to this headline">¶</a></h1>
+<p>Governance rules for a CCF network are defined in a JavaScript module called the <a class="reference internal" href="../glossary.html#term-Constitution"><span class="xref std std-term">Constitution</span></a>.</p>
+<p>It typically contains the following four elements:</p>
+<ol class="arabic simple">
+<li><p>A set of executable actions, which can be proposed by members and submitted to a vote.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">validate()</span></code> function, used to check that proposals submitted by members are well-formed.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">resolve()</span></code> function, used to evaluate ballots submitted by members for a proposal, and decide whether to apply it.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">apply()</span></code> function, called if a proposal has been successfully accepted.</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">resolve()</span></code> can be used to implement a range of governance models.
+For example, in a CCF network governed by <cite>4</cite> equal members, a strict majority <code class="docutils literal notranslate"><span class="pre">resolve()</span></code> would only applies proposals once <cite>3</cite> members (<cite>4/2 + 1</cite>) have voted in favour.</p>
+<p>Sample implementations of <code class="docutils literal notranslate"><span class="pre">resolve()</span></code> include (see <a class="reference internal" href="#models">Models</a> for further details):</p>
+<ul class="simple">
+<li><p>Strict majority (<a class="reference external" href="https://github.com/microsoft/CCF/blob/main/src/runtime_config/default/resolve.js">simple constitution</a>) that implements a “one-member, one-vote” constitution, with a majority rule.</p></li>
+<li><p>Strict majority with member veto (<a class="reference external" href="https://github.com/microsoft/CCF/blob/main/src/runtime_config/veto/resolve.js">simple constitution with veto</a>) similar to the Strict majority constitution, but where each member is allowed to veto any proposal.</p></li>
+<li><p>Operating member + strict majority (<a class="reference external" href="https://github.com/microsoft/CCF/blob/main/src/runtime_config/operator/resolve.js">operating member constitution</a>) that extends the “strict majority” constitution by defining an operating member allowed to add new nodes to the network, retire existing ones, and allow new versions of the code.</p></li>
+</ul>
+<p>Once the initial set of members have agreed on a constitution, the corresponding JavaScript file can be given to operators to create a new network (see <a class="reference internal" href="../operations/start_network.html"><span class="doc">Running a CCF Service</span></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The constitution can always be updated after the CCF network has been opened, subject to the existing constitution rules.</p>
+</div>
+<section id="models">
+<h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+<p>The operators of a CCF network do not necessarily overlap with the members of that network. Although the scriptability of the governance model effectively allows a large number of possible arrangements, the following two schemes seem most likely:</p>
+<section id="non-member-operators">
+<h3>Non-member operators<a class="headerlink" href="#non-member-operators" title="Permalink to this headline">¶</a></h3>
+<p>It is possible for a set of operators to host a CCF network without being members. These operators could:</p>
+<ul class="simple">
+<li><p>Start the network</p></li>
+<li><p>Hand it over to the members for them to Open (see <a class="reference internal" href="../governance/open_network.html"><span class="doc">Opening a Network</span></a>)</p></li>
+</ul>
+<p>In case of catastrophic failure, operators could also:</p>
+<ul class="simple">
+<li><p>Start a network in recovery mode from the ledger</p></li>
+<li><p>Hand it over to the members for them to Open (see <a class="reference internal" href="../governance/accept_recovery.html"><span class="doc">Accepting Recovery and Submitting Shares</span></a>)</p></li>
+</ul>
+<p>Finally, operators could:</p>
+<ul class="simple">
+<li><p>Propose new nodes</p></li>
+<li><p>Notify the members, who would have to review and vote on the proposal</p></li>
+</ul>
+<p>Operators would not be able to add or remove members or users to the service. They would not be able to update the code of the service (and therefore apply security patches). Because they could propose new nodes, but would require member votes before nodes are allowed to participate in the network, the operators’ ability to mitigate node failures may be limited and delayed.</p>
+<p>This model keeps operators completely out of the trust boundary for the service.</p>
+</section>
+<section id="operating-members">
+<h3>Operating members<a class="headerlink" href="#operating-members" title="Permalink to this headline">¶</a></h3>
+<p>If network operators are members, they can have the ability to:</p>
+<ul class="simple">
+<li><p>Update code (in particular, apply security patches)</p></li>
+<li><p>Add and remove nodes to and from the network</p></li>
+</ul>
+<p>Essentially, operators have the ability to fix security issues and mitigate service degradation of the network. In this situation however, the operator is inside the trust boundary.</p>
+<p>The constitution can limit or remove the operating members’ ability to:</p>
+<ul class="simple">
+<li><p>Add and remove members and users</p></li>
+<li><p>Complete a recovery</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These limits are weakened by the operators’ ability to update the code. A code update could contain changes that allow the operator to bypass constitution restrictions. Work is in progress to propose a service that would effectively mitigate this problem. In the absence of code updates however, other members of the service could trust that the operating members have not added or removed members and users, and have not executed a recovery.</p>
+</div>
+<p>This <a class="reference external" href="https://github.com/microsoft/CCF/blob/main/src/runtime_config/operator/resolve.js">operating member constitution</a> shows how some members can be made operators.</p>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="release_policy.html" title="previous page">CCF release and support policy</a>
+    <a class='right-next' id="next-link" href="consensus.html" title="next page">Consensus Protocols</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018, Microsoft Research.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,534 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Key-Value Serialisation &#8212; CCF  documentation</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Key-Value Store API" href="api.html" />
+    <link rel="prev" title="Key-Value Store How-To" href="kv_how_to.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../index.html">
+  <img src="../../_static/ccf.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../overview/index.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Build Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../use_apps/index.html">
+  Use Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../operations/index.html">
+  Operations
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../governance/index.html">
+  Governance
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../audit/index.html">
+  Audit
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../contribute/index.html">
+  Contribute
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../glossary.html">
+  Glossary
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/Microsoft/CCF" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../create_vm.html">
+   Create Azure SGX VM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../install_bin.html">
+   Install CCF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../build_setup.html">
+   CCF Development Setup
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../example.html">
+   C++ Application
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logging_cpp.html">
+     Logging (C++)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logging_rpc_api.html">
+     Logging RPC API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logging.html">
+     Logging
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../js_app.html">
+   JavaScript Application
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../js_app_ts.html">
+     TypeScript Application
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../js_app_tsoa.html">
+     TypeScript Application using tsoa
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../js_app_bundle.html">
+     JavaScript Application Bundle
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../js_app_ts.html">
+       TypeScript Application
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../js_app_tsoa.html">
+       TypeScript Application using tsoa
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../build_app.html">
+   Build and Sign CCF Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../run_app.html">
+   Running CCF Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../demo.html">
+   End-to-end demo
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../auth/index.html">
+   User Authentication
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../auth/jwt.html">
+     JWT Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../auth/cert.html">
+     Certificate Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../auth/jwt_ms_example.html">
+     JWT Authentication example using Microsoft Identity Platform
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Key-Value Store
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="kv_how_to.html">
+     Key-Value Store How-To
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Key-Value Serialisation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api.html">
+     Key-Value Store API
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../upgrading_app.html">
+   Upgrade Your Application
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../api.html">
+   Developer API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../crypto.html">
+   Cryptography API
+  </a>
+ </li>
+</ul>
+
+  </div>
+
+  
+  <h6> Versions </h6>
+  <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+      <option value="kv_serialisation.html">main </option>
+      <option value="../../../ccf-1.0.0/build_apps/kv/kv_serialisation.html">ccf-1.0.0 </option>
+  </select>
+  
+</nav><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#custom-key-and-value-types">
+   Custom key and value types
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/build_apps/kv/kv_serialisation.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="key-value-serialisation">
+<h1>Key-Value Serialisation<a class="headerlink" href="#key-value-serialisation" title="Permalink to this headline">¶</a></h1>
+<p>Every transaction executed by the primary on its Key-Value store is serialised before being replicated to all backups of the CCF network and written to the ledger. The serialisation format is defined per <a class="reference internal" href="api.html#_CPPv4N2kv3MapE" title="kv::Map"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">kv::Map</span></code></a> and distinctly for the key and value types.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Selecting the right serialision format for a KV map depends on the application logic but is generally a trade-off between performance and auditability of the ledger. For example, the default serialisation format for <a class="reference internal" href="api.html#_CPPv4N2kv3MapE" title="kv::Map"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">kv::Map</span></code></a> is JSON and allows for easy parsing of transactions in the <cite>public</cite> ledger. For more performance sensitive use cases, apps may define or use their own serialisers.</p>
+</div>
+<section id="custom-key-and-value-types">
+<h2>Custom key and value types<a class="headerlink" href="#custom-key-and-value-types" title="Permalink to this headline">¶</a></h2>
+<p>User-defined types can be used for both the key and value types of a <a class="reference internal" href="api.html#_CPPv4N2kv3MapE" title="kv::Map"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">kv::Map</span></code></a>. It must be possible to use the key type as the key of an <code class="docutils literal notranslate"><span class="pre">std::map</span></code> (so it must be copyable, assignable, and less-comparable), and both types must be serialisable. By default, when using a <a class="reference internal" href="api.html#_CPPv4N2kv3MapE" title="kv::Map"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">kv::Map</span></code></a>, serialisation converts to JSON. To add support to your custom types, it should usually be possible to use the <code class="docutils literal notranslate"><span class="pre">DECLARE_JSON_...</span></code> macros:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">CustomClass</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+  <span class="kt">size_t</span> <span class="n">n</span><span class="p">;</span>
+
+  <span class="c1">// This macro allows custom msgpack serialisation (optional)</span>
+  <span class="n">MSGPACK_DEFINE</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// These macros allow the default nlohmann JSON serialiser to be used</span>
+<span class="n">DECLARE_JSON_TYPE</span><span class="p">(</span><span class="n">CustomClass</span><span class="p">);</span>
+<span class="n">DECLARE_JSON_REQUIRED_FIELDS</span><span class="p">(</span><span class="n">CustomClass</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Custom serialisers can also be defined. The serialiser itself must be a type implementing <code class="docutils literal notranslate"><span class="pre">to_serialised</span></code> and <code class="docutils literal notranslate"><span class="pre">from_serialised</span></code> functions for the target type:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">CustomSerialiser</span>
+<span class="p">{</span>
+  <span class="cm">/**</span>
+<span class="cm">   * Format:</span>
+<span class="cm">   * [ 8 bytes=n | 8 bytes=size_of_s | size_of_s bytes=s... ]</span>
+<span class="cm">   */</span>
+
+  <span class="k">static</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">size_of_n</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+  <span class="k">static</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">size_of_size_of_s</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+  <span class="k">static</span> <span class="n">kv</span><span class="o">::</span><span class="n">serialisers</span><span class="o">::</span><span class="n">SerialisedEntry</span> <span class="nf">to_serialised</span><span class="p">(</span><span class="k">const</span> <span class="n">CustomClass</span><span class="o">&amp;</span> <span class="n">cc</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="k">auto</span> <span class="n">s_size</span> <span class="o">=</span> <span class="n">cc</span><span class="p">.</span><span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">const</span> <span class="k">auto</span> <span class="n">total_size</span> <span class="o">=</span> <span class="n">size_of_n</span> <span class="o">+</span> <span class="n">size_of_size_of_s</span> <span class="o">+</span> <span class="n">s_size</span><span class="p">;</span>
+    <span class="n">kv</span><span class="o">::</span><span class="n">serialisers</span><span class="o">::</span><span class="n">SerialisedEntry</span> <span class="n">serialised</span><span class="p">(</span><span class="n">total_size</span><span class="p">);</span>
+    <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">data</span> <span class="o">=</span> <span class="n">serialised</span><span class="p">.</span><span class="n">data</span><span class="p">();</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">cc</span><span class="p">.</span><span class="n">n</span><span class="p">,</span> <span class="n">size_of_n</span><span class="p">);</span>
+    <span class="n">data</span> <span class="o">+=</span> <span class="n">size_of_n</span><span class="p">;</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">s_size</span><span class="p">,</span> <span class="n">size_of_size_of_s</span><span class="p">);</span>
+    <span class="n">data</span> <span class="o">+=</span> <span class="n">size_of_size_of_s</span><span class="p">;</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">cc</span><span class="p">.</span><span class="n">s</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">s_size</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">serialised</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">static</span> <span class="n">CustomClass</span> <span class="nf">from_serialised</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">kv</span><span class="o">::</span><span class="n">serialisers</span><span class="o">::</span><span class="n">SerialisedEntry</span><span class="o">&amp;</span> <span class="n">ser</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">CustomClass</span> <span class="n">cc</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">data</span> <span class="o">=</span> <span class="n">ser</span><span class="p">.</span><span class="n">data</span><span class="p">();</span>
+    <span class="n">cc</span><span class="p">.</span><span class="n">n</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="n">data</span><span class="p">;</span>
+    <span class="n">data</span> <span class="o">+=</span> <span class="n">size_of_n</span><span class="p">;</span>
+    <span class="k">const</span> <span class="k">auto</span> <span class="n">s_size</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="n">data</span><span class="p">;</span>
+    <span class="n">data</span> <span class="o">+=</span> <span class="n">size_of_size_of_s</span><span class="p">;</span>
+    <span class="n">cc</span><span class="p">.</span><span class="n">s</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">s_size</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">memcpy</span><span class="p">(</span><span class="n">cc</span><span class="p">.</span><span class="n">s</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">data</span><span class="p">,</span> <span class="n">s_size</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">cc</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>To use these serialised for a specific map declare the map as a <a class="reference internal" href="api.html#_CPPv4I0000EN2kv8TypedMapE" title="kv::TypedMap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">kv::TypedMap</span></code></a>, adding the appropriate serialiser types for the key and value types:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">CustomSerialisedMap</span> <span class="o">=</span>
+  <span class="n">kv</span><span class="o">::</span><span class="n">TypedMap</span><span class="o">&lt;</span><span class="n">CustomClass</span><span class="p">,</span> <span class="n">CustomClass</span><span class="p">,</span> <span class="n">CustomSerialiser</span><span class="p">,</span> <span class="n">CustomSerialiser</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any external tools which wish to parse the ledger will need to know the serialisation format of the tables they care about. It is recommended, though not enforced, that you size-prefix each entry so it can be skipped by tools which do not understand the serialised format.</p>
+</div>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="kv_how_to.html" title="previous page">Key-Value Store How-To</a>
+    <a class='right-next' id="next-link" href="api.html" title="next page">Key-Value Store API</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018, Microsoft Research.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

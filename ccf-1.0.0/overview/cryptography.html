@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Cryptography &#8212; CCF  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Performance" href="performance.html" />
+    <link rel="prev" title="Consensus Protocols" href="consensus.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/ccf.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../build_apps/index.html">
+  Build Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../use_apps/index.html">
+  Use Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../operations/index.html">
+  Operations
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../governance/index.html">
+  Governance
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../audit/index.html">
+  Audit
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contribute/index.html">
+  Contribute
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../glossary.html">
+  Glossary
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/Microsoft/CCF" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="concepts.html">
+   Concepts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="release_policy.html">
+   CCF release and support policy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="governance.html">
+   Governance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="consensus.html">
+   Consensus Protocols
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Cryptography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="performance.html">
+   Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="threading.html">
+   Threading
+  </a>
+ </li>
+</ul>
+
+  </div>
+
+  
+  <h6> Versions </h6>
+  <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+      <option value="../../main/overview/cryptography.html">main </option>
+      <option value="cryptography.html">ccf-1.0.0 </option>
+  </select>
+  
+</nav><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#keys">
+   Keys
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#network">
+     Network
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#node">
+     Node
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#user">
+     User
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#member">
+     Member
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ephemeral-network-keys">
+     Ephemeral Network Keys
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithms-and-curves">
+   Algorithms and Curves
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/overview/cryptography.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="cryptography">
+<h1>Cryptography<a class="headerlink" href="#cryptography" title="Permalink to this headline">¶</a></h1>
+<section id="keys">
+<h2>Keys<a class="headerlink" href="#keys" title="Permalink to this headline">¶</a></h2>
+<section id="network">
+<h3>Network<a class="headerlink" href="#network" title="Permalink to this headline">¶</a></h3>
+<p>A CCF network has a master secret, which is used to derive keys for multiple purposes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A network identity public-key certificate, used for <a class="reference internal" href="../glossary.html#term-TLS"><span class="xref std std-term">TLS</span></a> server authentication.</p></li>
+<li><p>Symmetric data-encryption keys, used to encrypt entries in the ledger.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="node">
+<h3>Node<a class="headerlink" href="#node" title="Permalink to this headline">¶</a></h3>
+<p>Each CCF node is identified by a fresh public-key certificate endorsed by a quote.
+This certificate is used to authenticate the node when it joins the
+network, and to sign entries committed by the node to the ledger during its time as primary.</p>
+<p>Node keys are also used during recovery, to share recovered ledger secrets between nodes.</p>
+</section>
+<section id="user">
+<h3>User<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h3>
+<p>Each CCF user is identified by a public-key certificate, used for <a class="reference internal" href="../glossary.html#term-TLS"><span class="xref std std-term">TLS</span></a> client authentication when they connect to the service.
+These keys are also used to sign user commands.</p>
+</section>
+<section id="member">
+<h3>Member<a class="headerlink" href="#member" title="Permalink to this headline">¶</a></h3>
+<p>Each CCF consortium member is similarly identified by a public-key certificate used for client authentication and command signing.</p>
+</section>
+<section id="ephemeral-network-keys">
+<h3>Ephemeral Network Keys<a class="headerlink" href="#ephemeral-network-keys" title="Permalink to this headline">¶</a></h3>
+<p>Each node to node pair establishes a symmetric traffic key, using an authenticated Diffie Hellman key exchange.
+This key authenticates ledger replication headers exchanged between  nodes. It is also use to encrypt forwarded
+write transactions from the backups to the primary.</p>
+</section>
+</section>
+<section id="algorithms-and-curves">
+<h2>Algorithms and Curves<a class="headerlink" href="#algorithms-and-curves" title="Permalink to this headline">¶</a></h2>
+<p>Authenticated encryption in CCF relies on AES256-GCM. Ledger authentication relies on Merkle trees using SHA2-256.</p>
+<p>Public-key certificates, signatures, and ephemeral Diffie-Hellman key exchanges all rely on elliptic curves (except for the encryption of ledger secrets shared between nodes and member recovery shares, which uses <a class="reference external" href="https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding">RSA OAEP</a>). The supported curves are listed in <cite>crypto/curve.h</cite>:</p>
+<blockquote>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="k">enum</span> <span class="k">class</span> <span class="nc">CurveID</span>
+  <span class="p">{</span>
+    <span class="c1">/// No curve</span>
+    <span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="c1">/// The SECP384R1 curve</span>
+    <span class="n">SECP384R1</span><span class="p">,</span>
+    <span class="c1">/// The SECP256R1 curve</span>
+    <span class="n">SECP256R1</span>
+  <span class="p">};</span>
+
+  <span class="n">DECLARE_JSON_ENUM</span><span class="p">(</span>
+    <span class="n">CurveID</span><span class="p">,</span>
+    <span class="p">{{</span><span class="n">CurveID</span><span class="o">::</span><span class="n">NONE</span><span class="p">,</span> <span class="s">&quot;None&quot;</span><span class="p">},</span>
+     <span class="p">{</span><span class="n">CurveID</span><span class="o">::</span><span class="n">SECP384R1</span><span class="p">,</span> <span class="s">&quot;secp384r1&quot;</span><span class="p">},</span>
+     <span class="p">{</span><span class="n">CurveID</span><span class="o">::</span><span class="n">SECP256R1</span><span class="p">,</span> <span class="s">&quot;secp256r1&quot;</span><span class="p">}});</span>
+
+  <span class="k">static</span> <span class="k">constexpr</span> <span class="n">CurveID</span> <span class="n">service_identity_curve_choice</span> <span class="o">=</span> <span class="n">CurveID</span><span class="o">::</span><span class="n">SECP384R1</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">service_identity_curve_choice</span></code> determines the curve used by CCF for the service and node identities. User and member certificates do not need to match this, and can be created on any supported curve.</p>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="consensus.html" title="previous page">Consensus Protocols</a>
+    <a class='right-next' id="next-link" href="performance.html" title="next page">Performance</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018, Microsoft Research.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

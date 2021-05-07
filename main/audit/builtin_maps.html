@@ -1,0 +1,1356 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Built-in Maps &#8212; CCF  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Merkle Tree" href="merkle_tree.html" />
+    <link rel="prev" title="Audit" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/ccf.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../overview/index.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../build_apps/index.html">
+  Build Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../use_apps/index.html">
+  Use Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../operations/index.html">
+  Operations
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../governance/index.html">
+  Governance
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Audit
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contribute/index.html">
+  Contribute
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../glossary.html">
+  Glossary
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/Microsoft/CCF" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Built-in Maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="merkle_tree.html">
+   Merkle Tree
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ledger.html">
+   Ledger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_library.html">
+   Python Library
+  </a>
+ </li>
+</ul>
+
+  </div>
+
+  
+  <h6> Versions </h6>
+  <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+      <option value="builtin_maps.html">main </option>
+      <option value="../../ccf-1.0.0/audit/builtin_maps.html">ccf-1.0.0 </option>
+  </select>
+  
+</nav><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#public-ccf-gov">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     public:ccf.gov.
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#members-certs">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       members.certs
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#members-encryption-public-keys">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       members.encryption_public_keys
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#members-info">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       members.info
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#members-acks">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       members.acks
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#users-certs">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       users.certs
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#users-info">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       users.info
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nodes-info">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       nodes.info
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nodes-code-ids">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       nodes.code_ids
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#service-info">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       service.info
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#service-config">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       service.config
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#proposals">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       proposals
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#proposals-info">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       proposals_info
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modules">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       modules
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#endpoints">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       endpoints
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tls-ca-cert-bundles">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tls.ca_cert_bundles
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jwt-issuers">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       jwt.issuers
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jwt-public-signing-keys">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       jwt.public_signing_keys
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jwt-public-signing-key-issuer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       jwt.public_signing_key_issuer
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constitution">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       constitution
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#history">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       history
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#public-ccf-internal">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     public:ccf.internal.
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#values">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       values
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#historical-encrypted-ledger-secret">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       historical_encrypted_ledger_secret
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#encrypted-ledger-secrets">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       encrypted_ledger_secrets
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tree">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tree
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#signatures">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       signatures
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recovery-shares">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       recovery_shares
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#snapshot-evidence">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       snapshot_evidence
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#encrypted-submitted-shares">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       encrypted_submitted_shares
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/audit/builtin_maps.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="built-in-maps">
+<h1>Built-in Maps<a class="headerlink" href="#built-in-maps" title="Permalink to this headline">¶</a></h1>
+<section id="public-ccf-gov">
+<h2><code class="docutils literal notranslate"><span class="pre">public:ccf.gov.</span></code><a class="headerlink" href="#public-ccf-gov" title="Permalink to this headline">¶</a></h2>
+<section id="members-certs">
+<h3><code class="docutils literal notranslate"><span class="pre">members.certs</span></code><a class="headerlink" href="#members-certs" title="Permalink to this headline">¶</a></h3>
+<p>X509 certificates of all members in the consortium.</p>
+<p><strong>Key</strong> Member ID: SHA-256 fingerprint of the member certificate, represented as a hex-encoded string.</p>
+<p><strong>Value</strong> Member certificate, represented as a PEM-encoded string.</p>
+</section>
+<section id="members-encryption-public-keys">
+<h3><code class="docutils literal notranslate"><span class="pre">members.encryption_public_keys</span></code><a class="headerlink" href="#members-encryption-public-keys" title="Permalink to this headline">¶</a></h3>
+<p>Public encryption keys submitted by members to the network. The recovery share for each member is encrypted by the key they have submitted.</p>
+<p><strong>Key</strong> Member ID: SHA-256 fingerprint of the member certificate, represented as a hex-encoded string.</p>
+<p><strong>Value</strong> Member public encryption key, represented as a PEM-encoded string.</p>
+</section>
+<section id="members-info">
+<h3><code class="docutils literal notranslate"><span class="pre">members.info</span></code><a class="headerlink" href="#members-info" title="Permalink to this headline">¶</a></h3>
+<p>Participation status and auxiliary information attached to a member.</p>
+<p><strong>Key</strong> Member ID: SHA-256 fingerprint of the member’s X509 certificate, represented as a hex-encoded string.</p>
+<p><strong>Value</strong> Represented as JSON.</p>
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf13MemberDetailsE">
+<span id="_CPPv3N3ccf13MemberDetailsE"></span><span id="_CPPv2N3ccf13MemberDetailsE"></span><span id="ccf::MemberDetails"></span><span class="target" id="structccf_1_1MemberDetails"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">MemberDetails</span></code><a class="headerlink" href="#_CPPv4N3ccf13MemberDetailsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf13MemberDetails6statusE">
+<span id="_CPPv3N3ccf13MemberDetails6statusE"></span><span id="_CPPv2N3ccf13MemberDetails6statusE"></span><span id="ccf::MemberDetails::status__MemberStatus"></span><span class="target" id="structccf_1_1MemberDetails_1acd5ec0e9ed0f6dd4e89ddc434ad0fe3a"></span><a class="reference internal" href="#_CPPv4N3ccf12MemberStatusE" title="ccf::MemberStatus"><span class="pre">MemberStatus</span></a> <code class="sig-name descname"><span class="pre">status</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4N3ccf12MemberStatusE" title="ccf::MemberStatus"><span class="pre">MemberStatus</span></a><span class="pre">::</span><a class="reference internal" href="#_CPPv4N3ccf12MemberStatus8ACCEPTEDE" title="ccf::MemberStatus::ACCEPTED"><span class="pre">ACCEPTED</span></a><a class="headerlink" href="#_CPPv4N3ccf13MemberDetails6statusE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Status of the member in the consortium. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf13MemberDetails11member_dataE">
+<span id="_CPPv3N3ccf13MemberDetails11member_dataE"></span><span id="_CPPv2N3ccf13MemberDetails11member_dataE"></span><span id="ccf::MemberDetails::member_data__nlohmann::json"></span><span class="target" id="structccf_1_1MemberDetails_1a53860d95c7ca0a23c66f7394584852de"></span><span class="pre">nlohmann</span><span class="pre">::</span><span class="pre">json</span> <code class="sig-name descname"><span class="pre">member_data</span></code> <span class="pre">=</span> <span class="pre">nullptr</span><a class="headerlink" href="#_CPPv4N3ccf13MemberDetails11member_dataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Free-form member data, can be used to associate specific roles to members for example. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv4N3ccf12MemberStatusE">
+<span id="_CPPv3N3ccf12MemberStatusE"></span><span id="_CPPv2N3ccf12MemberStatusE"></span><span class="target" id="members_8h_1ad4b3c297b039ce68e44088c31d23db95"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">MemberStatus</span></code><a class="headerlink" href="#_CPPv4N3ccf12MemberStatusE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf12MemberStatus8ACCEPTEDE">
+<span id="_CPPv3N3ccf12MemberStatus8ACCEPTEDE"></span><span id="_CPPv2N3ccf12MemberStatus8ACCEPTEDE"></span><span class="target" id="dummy_1ad4b3c297b039ce68e44088c31d23db95aa806f1d2c42338ef5fa6497b66153e79"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">ACCEPTED</span></code><a class="headerlink" href="#_CPPv4N3ccf12MemberStatus8ACCEPTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf12MemberStatus6ACTIVEE">
+<span id="_CPPv3N3ccf12MemberStatus6ACTIVEE"></span><span id="_CPPv2N3ccf12MemberStatus6ACTIVEE"></span><span class="target" id="dummy_1ad4b3c297b039ce68e44088c31d23db95a18ff74f43da410c5529f7d6fca84f115"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">ACTIVE</span></code><a class="headerlink" href="#_CPPv4N3ccf12MemberStatus6ACTIVEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="members-acks">
+<h3><code class="docutils literal notranslate"><span class="pre">members.acks</span></code><a class="headerlink" href="#members-acks" title="Permalink to this headline">¶</a></h3>
+<p>Member acknowledgements of the ledger state, each containing a signature over the Merkle root at a particular sequence number.</p>
+<p><strong>Key</strong> Member ID: SHA-256 fingerprint of the member certificate, represented as a hex-encoded string.</p>
+<p><strong>Value</strong> Represented as JSON.</p>
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf9MemberAckE">
+<span id="_CPPv3N3ccf9MemberAckE"></span><span id="_CPPv2N3ccf9MemberAckE"></span><span id="ccf::MemberAck"></span><span class="target" id="structccf_1_1MemberAck"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">MemberAck</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">ccf</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N3ccf11StateDigestE" title="ccf::StateDigest"><span class="pre">StateDigest</span></a><a class="headerlink" href="#_CPPv4N3ccf9MemberAckE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9MemberAck10signed_reqE">
+<span id="_CPPv3N3ccf9MemberAck10signed_reqE"></span><span id="_CPPv2N3ccf9MemberAck10signed_reqE"></span><span id="ccf::MemberAck::signed_req__std::optional:SignedReq:"></span><span class="target" id="structccf_1_1MemberAck_1a7af8a69a83a00b67483e2cb6a3d0a57b"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">optional</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N3ccf9SignedReqE" title="ccf::SignedReq"><span class="pre">SignedReq</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">signed_req</span></code> <span class="pre">=</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">nullopt</span><a class="headerlink" href="#_CPPv4N3ccf9MemberAck10signed_reqE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Signed request containing the last state digest. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf11StateDigestE">
+<span id="_CPPv3N3ccf11StateDigestE"></span><span id="_CPPv2N3ccf11StateDigestE"></span><span id="ccf::StateDigest"></span><span class="target" id="structccf_1_1StateDigest"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">StateDigest</span></code><a class="headerlink" href="#_CPPv4N3ccf11StateDigestE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Records a signed signature containing the last state digest and the next state digest to sign </p>
+<p>Subclassed by <a class="reference internal" href="#structccf_1_1MemberAck"><span class="std std-ref">ccf::MemberAck</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf11StateDigest12state_digestE">
+<span id="_CPPv3N3ccf11StateDigest12state_digestE"></span><span id="_CPPv2N3ccf11StateDigest12state_digestE"></span><span id="ccf::StateDigest::state_digest__ss"></span><span class="target" id="structccf_1_1StateDigest_1a46a793f5b03877d6350c0ddc4f4ff5d5"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <code class="sig-name descname"><span class="pre">state_digest</span></code><a class="headerlink" href="#_CPPv4N3ccf11StateDigest12state_digestE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Next state digest the member is expected to sign. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf9SignedReqE">
+<span id="_CPPv3N3ccf9SignedReqE"></span><span id="_CPPv2N3ccf9SignedReqE"></span><span id="ccf::SignedReq"></span><span class="target" id="structccf_1_1SignedReq"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">SignedReq</span></code><a class="headerlink" href="#_CPPv4N3ccf9SignedReqE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9SignedReq3sigE">
+<span id="_CPPv3N3ccf9SignedReq3sigE"></span><span id="_CPPv2N3ccf9SignedReq3sigE"></span><span id="ccf::SignedReq::sig__std::vector:uint8_t:"></span><span class="target" id="structccf_1_1SignedReq_1a15235da30d13659a0ce4bd0a9956e018"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">uint8_t</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">sig</span></code> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N3ccf9SignedReq3sigE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Signature. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9SignedReq3reqE">
+<span id="_CPPv3N3ccf9SignedReq3reqE"></span><span id="_CPPv2N3ccf9SignedReq3reqE"></span><span id="ccf::SignedReq::req__std::vector:uint8_t:"></span><span class="target" id="structccf_1_1SignedReq_1a955be400e114d8b8447f9e31140a6300"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">uint8_t</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">req</span></code> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N3ccf9SignedReq3reqE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Signed content. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9SignedReq12request_bodyE">
+<span id="_CPPv3N3ccf9SignedReq12request_bodyE"></span><span id="_CPPv2N3ccf9SignedReq12request_bodyE"></span><span id="ccf::SignedReq::request_body__std::vector:uint8_t:"></span><span class="target" id="structccf_1_1SignedReq_1a675e568d9218db6523e7745cf0142461"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">uint8_t</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">request_body</span></code> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N3ccf9SignedReq12request_bodyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Request body. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9SignedReq2mdE">
+<span id="_CPPv3N3ccf9SignedReq2mdE"></span><span id="_CPPv2N3ccf9SignedReq2mdE"></span><span id="ccf::SignedReq::md__crypto::MDType"></span><span class="target" id="structccf_1_1SignedReq_1a524c0983738d176e422cadeafed8c1d4"></span><span class="pre">crypto</span><span class="pre">::</span><span class="pre">MDType</span> <code class="sig-name descname"><span class="pre">md</span></code> <span class="pre">=</span> <span class="pre">crypto</span><span class="pre">::</span><span class="pre">MDType</span><span class="pre">::</span><span class="pre">NONE</span><a class="headerlink" href="#_CPPv4N3ccf9SignedReq2mdE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Hashing algorithm used to summarise content before signature. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9SignedReq6key_idE">
+<span id="_CPPv3N3ccf9SignedReq6key_idE"></span><span id="_CPPv2N3ccf9SignedReq6key_idE"></span><span id="ccf::SignedReq::key_id__ss"></span><span class="target" id="structccf_1_1SignedReq_1a072d1c9efaf825fe94dcb7959ae65cb7"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <code class="sig-name descname"><span class="pre">key_id</span></code> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N3ccf9SignedReq6key_idE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Signer key id, if present in the request. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="users-certs">
+<h3><code class="docutils literal notranslate"><span class="pre">users.certs</span></code><a class="headerlink" href="#users-certs" title="Permalink to this headline">¶</a></h3>
+<p>X509 certificates of all network users.</p>
+<p><strong>Key</strong> User ID: SHA-256 fingerprint of the user certificate, represented as a hex-encoded string.</p>
+<p><strong>Value</strong> User certificate, represented as a PEM-encoded string.</p>
+</section>
+<section id="users-info">
+<h3><code class="docutils literal notranslate"><span class="pre">users.info</span></code><a class="headerlink" href="#users-info" title="Permalink to this headline">¶</a></h3>
+<p>Auxiliary information attached to a user.</p>
+<p><strong>Key</strong> User ID: SHA-256 fingerprint of the user certificate, represented as a hex-encoded string.</p>
+<p><strong>Value</strong> Represented as JSON.</p>
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf11UserDetailsE">
+<span id="_CPPv3N3ccf11UserDetailsE"></span><span id="_CPPv2N3ccf11UserDetailsE"></span><span id="ccf::UserDetails"></span><span class="target" id="structccf_1_1UserDetails"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">UserDetails</span></code><a class="headerlink" href="#_CPPv4N3ccf11UserDetailsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf11UserDetails9user_dataE">
+<span id="_CPPv3N3ccf11UserDetails9user_dataE"></span><span id="_CPPv2N3ccf11UserDetails9user_dataE"></span><span id="ccf::UserDetails::user_data__nlohmann::json"></span><span class="target" id="structccf_1_1UserDetails_1ac1c062a7d6f82634ce5784c31105fc2b"></span><span class="pre">nlohmann</span><span class="pre">::</span><span class="pre">json</span> <code class="sig-name descname"><span class="pre">user_data</span></code> <span class="pre">=</span> <span class="pre">nullptr</span><a class="headerlink" href="#_CPPv4N3ccf11UserDetails9user_dataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Free-form user data, useful to store role information about users for example. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="nodes-info">
+<h3><code class="docutils literal notranslate"><span class="pre">nodes.info</span></code><a class="headerlink" href="#nodes-info" title="Permalink to this headline">¶</a></h3>
+<p>Identity, status and attestations (endorsed quotes) of the nodes hosting the network.</p>
+<p><strong>Key</strong> Node ID: SHA-256 digest of the node public key, represented as a hex-encoded string.</p>
+<p><strong>Value</strong> Represented as JSON.</p>
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf8NodeInfoE">
+<span id="_CPPv3N3ccf8NodeInfoE"></span><span id="_CPPv2N3ccf8NodeInfoE"></span><span id="ccf::NodeInfo"></span><span class="target" id="structccf_1_1NodeInfo"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">NodeInfo</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">ccf</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N3ccf15NodeInfoNetworkE" title="ccf::NodeInfoNetwork"><span class="pre">NodeInfoNetwork</span></a><a class="headerlink" href="#_CPPv4N3ccf8NodeInfoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf8NodeInfo4certE">
+<span id="_CPPv3N3ccf8NodeInfo4certE"></span><span id="_CPPv2N3ccf8NodeInfo4certE"></span><span id="ccf::NodeInfo::cert__crypto::Pem"></span><span class="target" id="structccf_1_1NodeInfo_1a625d943f7a11f93a230febacea8cf79c"></span><span class="pre">crypto</span><span class="pre">::</span><span class="pre">Pem</span> <code class="sig-name descname"><span class="pre">cert</span></code><a class="headerlink" href="#_CPPv4N3ccf8NodeInfo4certE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Node certificate. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf8NodeInfo10quote_infoE">
+<span id="_CPPv3N3ccf8NodeInfo10quote_infoE"></span><span id="_CPPv2N3ccf8NodeInfo10quote_infoE"></span><span id="ccf::NodeInfo::quote_info__QuoteInfo"></span><span class="target" id="structccf_1_1NodeInfo_1a5a5e50ec5e50c124552176aaff9d0d22"></span><a class="reference internal" href="#_CPPv4N3ccf9QuoteInfoE" title="ccf::QuoteInfo"><span class="pre">QuoteInfo</span></a> <code class="sig-name descname"><span class="pre">quote_info</span></code><a class="headerlink" href="#_CPPv4N3ccf8NodeInfo10quote_infoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Node enclave quote. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf8NodeInfo18encryption_pub_keyE">
+<span id="_CPPv3N3ccf8NodeInfo18encryption_pub_keyE"></span><span id="_CPPv2N3ccf8NodeInfo18encryption_pub_keyE"></span><span id="ccf::NodeInfo::encryption_pub_key__crypto::Pem"></span><span class="target" id="structccf_1_1NodeInfo_1a193485e563c67c1e49e76ce70b4722a6"></span><span class="pre">crypto</span><span class="pre">::</span><span class="pre">Pem</span> <code class="sig-name descname"><span class="pre">encryption_pub_key</span></code><a class="headerlink" href="#_CPPv4N3ccf8NodeInfo18encryption_pub_keyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Node encryption public key, used to distribute ledger re-keys. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf8NodeInfo6statusE">
+<span id="_CPPv3N3ccf8NodeInfo6statusE"></span><span id="_CPPv2N3ccf8NodeInfo6statusE"></span><span id="ccf::NodeInfo::status__NodeStatus"></span><span class="target" id="structccf_1_1NodeInfo_1a9356d27d984e569759171e63d80993d3"></span><a class="reference internal" href="#_CPPv4N3ccf10NodeStatusE" title="ccf::NodeStatus"><span class="pre">NodeStatus</span></a> <code class="sig-name descname"><span class="pre">status</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4N3ccf10NodeStatusE" title="ccf::NodeStatus"><span class="pre">NodeStatus</span></a><span class="pre">::</span><a class="reference internal" href="#_CPPv4N3ccf10NodeStatus7PENDINGE" title="ccf::NodeStatus::PENDING"><span class="pre">PENDING</span></a><a class="headerlink" href="#_CPPv4N3ccf8NodeInfo6statusE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Node status. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf8NodeInfo19ledger_secret_seqnoE">
+<span id="_CPPv3N3ccf8NodeInfo19ledger_secret_seqnoE"></span><span id="_CPPv2N3ccf8NodeInfo19ledger_secret_seqnoE"></span><span id="ccf::NodeInfo::ledger_secret_seqno__std::optional:kv::Version:"></span><span class="target" id="structccf_1_1NodeInfo_1a4f773c072c4ea0f19de9ba1dd426b1fe"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">optional</span><span class="pre">&lt;</span><span class="pre">kv</span><span class="pre">::</span><a class="reference internal" href="../build_apps/kv/api.html#_CPPv4N2kv7VersionE" title="kv::Version"><span class="pre">Version</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">ledger_secret_seqno</span></code> <span class="pre">=</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">nullopt</span><a class="headerlink" href="#_CPPv4N3ccf8NodeInfo19ledger_secret_seqnoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set to the seqno of the latest ledger secret at the time the node is trusted </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv4N3ccf10NodeStatusE">
+<span id="_CPPv3N3ccf10NodeStatusE"></span><span id="_CPPv2N3ccf10NodeStatusE"></span><span class="target" id="nodes_8h_1acd86c6e4243ac6340cc7969267ee5e75"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">NodeStatus</span></code><a class="headerlink" href="#_CPPv4N3ccf10NodeStatusE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf10NodeStatus7PENDINGE">
+<span id="_CPPv3N3ccf10NodeStatus7PENDINGE"></span><span id="_CPPv2N3ccf10NodeStatus7PENDINGE"></span><span class="target" id="dummy_1acd86c6e4243ac6340cc7969267ee5e75ac69f06e1a9b016d133907b4e5f5864d2"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">PENDING</span></code><a class="headerlink" href="#_CPPv4N3ccf10NodeStatus7PENDINGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf10NodeStatus7TRUSTEDE">
+<span id="_CPPv3N3ccf10NodeStatus7TRUSTEDE"></span><span id="_CPPv2N3ccf10NodeStatus7TRUSTEDE"></span><span class="target" id="dummy_1acd86c6e4243ac6340cc7969267ee5e75ae832adef915418a62df152b813f48316"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">TRUSTED</span></code><a class="headerlink" href="#_CPPv4N3ccf10NodeStatus7TRUSTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf10NodeStatus7RETIREDE">
+<span id="_CPPv3N3ccf10NodeStatus7RETIREDE"></span><span id="_CPPv2N3ccf10NodeStatus7RETIREDE"></span><span class="target" id="dummy_1acd86c6e4243ac6340cc7969267ee5e75af509be1cc64421d5b60cb6458f99c352"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">RETIRED</span></code><a class="headerlink" href="#_CPPv4N3ccf10NodeStatus7RETIREDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf15NodeInfoNetworkE">
+<span id="_CPPv3N3ccf15NodeInfoNetworkE"></span><span id="_CPPv2N3ccf15NodeInfoNetworkE"></span><span id="ccf::NodeInfoNetwork"></span><span class="target" id="structccf_1_1NodeInfoNetwork"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">NodeInfoNetwork</span></code><a class="headerlink" href="#_CPPv4N3ccf15NodeInfoNetworkE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Subclassed by <a class="reference internal" href="#structccf_1_1NodeInfo"><span class="std std-ref">ccf::NodeInfo</span></a></p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf9QuoteInfoE">
+<span id="_CPPv3N3ccf9QuoteInfoE"></span><span id="_CPPv2N3ccf9QuoteInfoE"></span><span id="ccf::QuoteInfo"></span><span class="target" id="structccf_1_1QuoteInfo"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">QuoteInfo</span></code><a class="headerlink" href="#_CPPv4N3ccf9QuoteInfoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9QuoteInfo6formatE">
+<span id="_CPPv3N3ccf9QuoteInfo6formatE"></span><span id="_CPPv2N3ccf9QuoteInfo6formatE"></span><span id="ccf::QuoteInfo::format__QuoteFormat"></span><span class="target" id="structccf_1_1QuoteInfo_1a58611bfccd21d11182ad8886ac5e1178"></span><a class="reference internal" href="#_CPPv4N3ccf11QuoteFormatE" title="ccf::QuoteFormat"><span class="pre">QuoteFormat</span></a> <code class="sig-name descname"><span class="pre">format</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4N3ccf11QuoteFormatE" title="ccf::QuoteFormat"><span class="pre">QuoteFormat</span></a><span class="pre">::</span><a class="reference internal" href="#_CPPv4N3ccf11QuoteFormat9oe_sgx_v1E" title="ccf::QuoteFormat::oe_sgx_v1"><span class="pre">oe_sgx_v1</span></a><a class="headerlink" href="#_CPPv4N3ccf9QuoteInfo6formatE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Quote format. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9QuoteInfo5quoteE">
+<span id="_CPPv3N3ccf9QuoteInfo5quoteE"></span><span id="_CPPv2N3ccf9QuoteInfo5quoteE"></span><span id="ccf::QuoteInfo::quote__std::vector:uint8_t:"></span><span class="target" id="structccf_1_1QuoteInfo_1ac17763100fc9615dd19cc9e845ebadd4"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">uint8_t</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">quote</span></code><a class="headerlink" href="#_CPPv4N3ccf9QuoteInfo5quoteE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Enclave quote. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9QuoteInfo12endorsementsE">
+<span id="_CPPv3N3ccf9QuoteInfo12endorsementsE"></span><span id="_CPPv2N3ccf9QuoteInfo12endorsementsE"></span><span id="ccf::QuoteInfo::endorsements__std::vector:uint8_t:"></span><span class="target" id="structccf_1_1QuoteInfo_1ac9a1b088c758588aab1b997482562af9"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">uint8_t</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">endorsements</span></code><a class="headerlink" href="#_CPPv4N3ccf9QuoteInfo12endorsementsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Quote endorsements. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv4N3ccf11QuoteFormatE">
+<span id="_CPPv3N3ccf11QuoteFormatE"></span><span id="_CPPv2N3ccf11QuoteFormatE"></span><span class="target" id="quote__info_8h_1aafae2feba602309189e3d37c07437b10"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">QuoteFormat</span></code><a class="headerlink" href="#_CPPv4N3ccf11QuoteFormatE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf11QuoteFormat9oe_sgx_v1E">
+<span id="_CPPv3N3ccf11QuoteFormat9oe_sgx_v1E"></span><span id="_CPPv2N3ccf11QuoteFormat9oe_sgx_v1E"></span><span class="target" id="dummy_1aafae2feba602309189e3d37c07437b10a52f61d376865a3cf47efe416f215a55e"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">oe_sgx_v1</span></code><a class="headerlink" href="#_CPPv4N3ccf11QuoteFormat9oe_sgx_v1E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="nodes-code-ids">
+<h3><code class="docutils literal notranslate"><span class="pre">nodes.code_ids</span></code><a class="headerlink" href="#nodes-code-ids" title="Permalink to this headline">¶</a></h3>
+<p>Versions of the code allowed to join the current network.</p>
+<p><strong>Key</strong> MRENCLAVE, represented as a base64 string.</p>
+<p><strong>Value</strong> Represented as JSON.</p>
+<dl class="cpp enum">
+<dt id="_CPPv4N3ccf10CodeStatusE">
+<span id="_CPPv3N3ccf10CodeStatusE"></span><span id="_CPPv2N3ccf10CodeStatusE"></span><span class="target" id="code__id_8h_1aba71651e3ae7c4529ae128cabb9be231"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">CodeStatus</span></code><a class="headerlink" href="#_CPPv4N3ccf10CodeStatusE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf10CodeStatus15ALLOWED_TO_JOINE">
+<span id="_CPPv3N3ccf10CodeStatus15ALLOWED_TO_JOINE"></span><span id="_CPPv2N3ccf10CodeStatus15ALLOWED_TO_JOINE"></span><span class="target" id="dummy_1aba71651e3ae7c4529ae128cabb9be231ad890c8042b70267068ea41906d03522a"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">ALLOWED_TO_JOIN</span></code><a class="headerlink" href="#_CPPv4N3ccf10CodeStatus15ALLOWED_TO_JOINE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<p><strong>Example</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code ID</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cae46d1...bb908b64e</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ALLOWED_TO_JOIN</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="service-info">
+<h3><code class="docutils literal notranslate"><span class="pre">service.info</span></code><a class="headerlink" href="#service-info" title="Permalink to this headline">¶</a></h3>
+<p>Service identity and status.</p>
+<p><strong>Key</strong> Sentinel value 0, represented as a little-endian 64-bit unsigned integer.</p>
+<p><strong>Value</strong> Represented as JSON.</p>
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf11ServiceInfoE">
+<span id="_CPPv3N3ccf11ServiceInfoE"></span><span id="_CPPv2N3ccf11ServiceInfoE"></span><span id="ccf::ServiceInfo"></span><span class="target" id="structccf_1_1ServiceInfo"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">ServiceInfo</span></code><a class="headerlink" href="#_CPPv4N3ccf11ServiceInfoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</section>
+<section id="service-config">
+<h3><code class="docutils literal notranslate"><span class="pre">service.config</span></code><a class="headerlink" href="#service-config" title="Permalink to this headline">¶</a></h3>
+<p>Service configuration.</p>
+<p><strong>Key</strong> Sentinel value 0, represented as a little-endian 64-bit unsigned integer.</p>
+<p><strong>Value</strong> Represented as JSON.</p>
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf20ServiceConfigurationE">
+<span id="_CPPv3N3ccf20ServiceConfigurationE"></span><span id="_CPPv2N3ccf20ServiceConfigurationE"></span><span id="ccf::ServiceConfiguration"></span><span class="target" id="structccf_1_1ServiceConfiguration"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">ServiceConfiguration</span></code><a class="headerlink" href="#_CPPv4N3ccf20ServiceConfigurationE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</section>
+<section id="proposals">
+<h3><code class="docutils literal notranslate"><span class="pre">proposals</span></code><a class="headerlink" href="#proposals" title="Permalink to this headline">¶</a></h3>
+<p>Governance proposals.</p>
+<p><strong>Key</strong> Proposal ID: SHA-256 digest of the proposal and store state observed during its creation, represented as a hex-encoded string.</p>
+<p><strong>Value</strong> Proposal as submitted (body of proposal request), as a raw buffer.</p>
+</section>
+<section id="proposals-info">
+<h3><code class="docutils literal notranslate"><span class="pre">proposals_info</span></code><a class="headerlink" href="#proposals-info" title="Permalink to this headline">¶</a></h3>
+<p>Status, proposer ID and ballots attached to a proposal.</p>
+<p><strong>Key</strong> Proposal ID: SHA-256 digest of the proposal and store state observed during its creation, represented as a hex-encoded string.</p>
+<p><strong>Value</strong> Represented as JSON.</p>
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf5jsgov19ProposalInfoDetailsE">
+<span id="_CPPv3N3ccf5jsgov19ProposalInfoDetailsE"></span><span id="_CPPv2N3ccf5jsgov19ProposalInfoDetailsE"></span><span id="ccf::jsgov::ProposalInfoDetails"></span><span class="target" id="structccf_1_1jsgov_1_1ProposalInfoDetails"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><span class="pre">::</span><span class="pre">jsgov</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">ProposalInfoDetails</span></code><a class="headerlink" href="#_CPPv4N3ccf5jsgov19ProposalInfoDetailsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf5jsgov19ProposalInfoDetails11proposal_idE">
+<span id="_CPPv3N3ccf5jsgov19ProposalInfoDetails11proposal_idE"></span><span id="_CPPv2N3ccf5jsgov19ProposalInfoDetails11proposal_idE"></span><span id="ccf::jsgov::ProposalInfoDetails::proposal_id__ProposalId"></span><span class="target" id="structccf_1_1jsgov_1_1ProposalInfoDetails_1ac3a237145649732efcc26a4b589e51bc"></span><span class="pre">ProposalId</span> <code class="sig-name descname"><span class="pre">proposal_id</span></code><a class="headerlink" href="#_CPPv4N3ccf5jsgov19ProposalInfoDetails11proposal_idE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Proposal ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf5jsgov19ProposalInfoDetails11proposer_idE">
+<span id="_CPPv3N3ccf5jsgov19ProposalInfoDetails11proposer_idE"></span><span id="_CPPv2N3ccf5jsgov19ProposalInfoDetails11proposer_idE"></span><span id="ccf::jsgov::ProposalInfoDetails::proposer_id__ccf::MemberId"></span><span class="target" id="structccf_1_1jsgov_1_1ProposalInfoDetails_1af6cf888af31fbcaf0d55faa25827f94d"></span><span class="pre">ccf</span><span class="pre">::</span><span class="pre">MemberId</span> <code class="sig-name descname"><span class="pre">proposer_id</span></code><a class="headerlink" href="#_CPPv4N3ccf5jsgov19ProposalInfoDetails11proposer_idE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Member ID of the proposer. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf5jsgov19ProposalInfoDetails5stateE">
+<span id="_CPPv3N3ccf5jsgov19ProposalInfoDetails5stateE"></span><span id="_CPPv2N3ccf5jsgov19ProposalInfoDetails5stateE"></span><span id="ccf::jsgov::ProposalInfoDetails::state__ccf::ProposalState"></span><span class="target" id="structccf_1_1jsgov_1_1ProposalInfoDetails_1a61ab11f9a283b96bd4b25cc24dd8795c"></span><span class="pre">ccf</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N3ccf13ProposalStateE" title="ccf::ProposalState"><span class="pre">ProposalState</span></a> <code class="sig-name descname"><span class="pre">state</span></code><a class="headerlink" href="#_CPPv4N3ccf5jsgov19ProposalInfoDetails5stateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Proposal state. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf5jsgov19ProposalInfoDetails7ballotsE">
+<span id="_CPPv3N3ccf5jsgov19ProposalInfoDetails7ballotsE"></span><span id="_CPPv2N3ccf5jsgov19ProposalInfoDetails7ballotsE"></span><span id="ccf::jsgov::ProposalInfoDetails::ballots__Ballots"></span><span class="target" id="structccf_1_1jsgov_1_1ProposalInfoDetails_1a3e08c692db3e6ca9a1cecf68c7301196"></span><span class="pre">Ballots</span> <code class="sig-name descname"><span class="pre">ballots</span></code> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N3ccf5jsgov19ProposalInfoDetails7ballotsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Ballots (scripts) submitted for the proposal. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv4N3ccf13ProposalStateE">
+<span id="_CPPv3N3ccf13ProposalStateE"></span><span id="_CPPv2N3ccf13ProposalStateE"></span><span class="target" id="proposals_8h_1a8c67ca24993f1a105c421c8a09817175"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">ProposalState</span></code><a class="headerlink" href="#_CPPv4N3ccf13ProposalStateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Members use proposals to propose changes to the public governance tables in the KV store. Active members can issue proposals. These proposals are stored in the KV, and passed to the JS constitution functions for validation and execution. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf13ProposalState4OPENE">
+<span id="_CPPv3N3ccf13ProposalState4OPENE"></span><span id="_CPPv2N3ccf13ProposalState4OPENE"></span><span class="target" id="dummy_1a8c67ca24993f1a105c421c8a09817175aa38bd5138bf35514df41a1795ebbf5c3"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">OPEN</span></code><a class="headerlink" href="#_CPPv4N3ccf13ProposalState4OPENE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf13ProposalState8ACCEPTEDE">
+<span id="_CPPv3N3ccf13ProposalState8ACCEPTEDE"></span><span id="_CPPv2N3ccf13ProposalState8ACCEPTEDE"></span><span class="target" id="dummy_1a8c67ca24993f1a105c421c8a09817175aa806f1d2c42338ef5fa6497b66153e79"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">ACCEPTED</span></code><a class="headerlink" href="#_CPPv4N3ccf13ProposalState8ACCEPTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf13ProposalState9WITHDRAWNE">
+<span id="_CPPv3N3ccf13ProposalState9WITHDRAWNE"></span><span id="_CPPv2N3ccf13ProposalState9WITHDRAWNE"></span><span class="target" id="dummy_1a8c67ca24993f1a105c421c8a09817175a15f20da2a811c696726c7187065cd6d2"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">WITHDRAWN</span></code><a class="headerlink" href="#_CPPv4N3ccf13ProposalState9WITHDRAWNE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf13ProposalState8REJECTEDE">
+<span id="_CPPv3N3ccf13ProposalState8REJECTEDE"></span><span id="_CPPv2N3ccf13ProposalState8REJECTEDE"></span><span class="target" id="dummy_1a8c67ca24993f1a105c421c8a09817175a9cc8ad3d99798c6726d4af0bd14e49d2"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">REJECTED</span></code><a class="headerlink" href="#_CPPv4N3ccf13ProposalState8REJECTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf13ProposalState6FAILEDE">
+<span id="_CPPv3N3ccf13ProposalState6FAILEDE"></span><span id="_CPPv2N3ccf13ProposalState6FAILEDE"></span><span class="target" id="dummy_1a8c67ca24993f1a105c421c8a09817175ab9e14d9b2886bcff408b85aefa780419"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">FAILED</span></code><a class="headerlink" href="#_CPPv4N3ccf13ProposalState6FAILEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf13ProposalState7DROPPEDE">
+<span id="_CPPv3N3ccf13ProposalState7DROPPEDE"></span><span id="_CPPv2N3ccf13ProposalState7DROPPEDE"></span><span class="target" id="dummy_1a8c67ca24993f1a105c421c8a09817175ac69a1e32a105a29d95e6e7a883188d62"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">DROPPED</span></code><a class="headerlink" href="#_CPPv4N3ccf13ProposalState7DROPPEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="modules">
+<h3><code class="docutils literal notranslate"><span class="pre">modules</span></code><a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h3>
+<p>JavaScript modules, accessible by JavaScript endpoint functions.</p>
+<p><strong>Key</strong> Module name as a string.</p>
+<p><strong>Value</strong> Contents of the module as a string.</p>
+</section>
+<section id="endpoints">
+<h3><code class="docutils literal notranslate"><span class="pre">endpoints</span></code><a class="headerlink" href="#endpoints" title="Permalink to this headline">¶</a></h3>
+<p>JavaScript endpoint definitions.</p>
+<p><strong>Key</strong> Represented as JSON.</p>
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf9endpoints11EndpointKeyE">
+<span id="_CPPv3N3ccf9endpoints11EndpointKeyE"></span><span id="_CPPv2N3ccf9endpoints11EndpointKeyE"></span><span id="ccf::endpoints::EndpointKey"></span><span class="target" id="structccf_1_1endpoints_1_1EndpointKey"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><span class="pre">::</span><span class="pre">endpoints</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">EndpointKey</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints11EndpointKeyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9endpoints11EndpointKey8uri_pathE">
+<span id="_CPPv3N3ccf9endpoints11EndpointKey8uri_pathE"></span><span id="_CPPv2N3ccf9endpoints11EndpointKey8uri_pathE"></span><span id="ccf::endpoints::EndpointKey::uri_path__URI"></span><span class="target" id="structccf_1_1endpoints_1_1EndpointKey_1a3eab487f8a03f82328fe0c634b59b40f"></span><span class="pre">URI</span> <code class="sig-name descname"><span class="pre">uri_path</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints11EndpointKey8uri_pathE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>URI path to endpoint. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9endpoints11EndpointKey4verbE">
+<span id="_CPPv3N3ccf9endpoints11EndpointKey4verbE"></span><span id="_CPPv2N3ccf9endpoints11EndpointKey4verbE"></span><span id="ccf::endpoints::EndpointKey::verb__RESTVerb"></span><span class="target" id="structccf_1_1endpoints_1_1EndpointKey_1a8959d62c519c607b68c4b53dbf180470"></span><span class="pre">RESTVerb</span> <code class="sig-name descname"><span class="pre">verb</span></code> <span class="pre">=</span> <span class="pre">HTTP_POST</span><a class="headerlink" href="#_CPPv4N3ccf9endpoints11EndpointKey4verbE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>HTTP Verb. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<p><strong>Value</strong> Represented as JSON.</p>
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf9endpoints18EndpointPropertiesE">
+<span id="_CPPv3N3ccf9endpoints18EndpointPropertiesE"></span><span id="_CPPv2N3ccf9endpoints18EndpointPropertiesE"></span><span id="ccf::endpoints::EndpointProperties"></span><span class="target" id="structccf_1_1endpoints_1_1EndpointProperties"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><span class="pre">::</span><span class="pre">endpoints</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">EndpointProperties</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints18EndpointPropertiesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9endpoints18EndpointProperties4modeE">
+<span id="_CPPv3N3ccf9endpoints18EndpointProperties4modeE"></span><span id="_CPPv2N3ccf9endpoints18EndpointProperties4modeE"></span><span id="ccf::endpoints::EndpointProperties::mode__Mode"></span><span class="target" id="structccf_1_1endpoints_1_1EndpointProperties_1ae9e021eb55d1399cdf3332e22b6abb7c"></span><a class="reference internal" href="#_CPPv4N3ccf9endpoints4ModeE" title="ccf::endpoints::Mode"><span class="pre">Mode</span></a> <code class="sig-name descname"><span class="pre">mode</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4N3ccf9endpoints4ModeE" title="ccf::endpoints::Mode"><span class="pre">Mode</span></a><span class="pre">::</span><a class="reference internal" href="#_CPPv4N3ccf9endpoints4Mode9ReadWriteE" title="ccf::endpoints::Mode::ReadWrite"><span class="pre">ReadWrite</span></a><a class="headerlink" href="#_CPPv4N3ccf9endpoints18EndpointProperties4modeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="../build_apps/api.html#structccf_1_1endpoints_1_1Endpoint"><span class="std std-ref">Endpoint</span></a> mode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9endpoints18EndpointProperties19forwarding_requiredE">
+<span id="_CPPv3N3ccf9endpoints18EndpointProperties19forwarding_requiredE"></span><span id="_CPPv2N3ccf9endpoints18EndpointProperties19forwarding_requiredE"></span><span id="ccf::endpoints::EndpointProperties::forwarding_required__ForwardingRequired"></span><span class="target" id="structccf_1_1endpoints_1_1EndpointProperties_1abd26fcf7cbeeeb5a14aaed70ef660045"></span><a class="reference internal" href="#_CPPv4N3ccf9endpoints18ForwardingRequiredE" title="ccf::endpoints::ForwardingRequired"><span class="pre">ForwardingRequired</span></a> <code class="sig-name descname"><span class="pre">forwarding_required</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4N3ccf9endpoints18ForwardingRequiredE" title="ccf::endpoints::ForwardingRequired"><span class="pre">ForwardingRequired</span></a><span class="pre">::</span><a class="reference internal" href="#_CPPv4N3ccf9endpoints18ForwardingRequired6AlwaysE" title="ccf::endpoints::ForwardingRequired::Always"><span class="pre">Always</span></a><a class="headerlink" href="#_CPPv4N3ccf9endpoints18EndpointProperties19forwarding_requiredE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="../build_apps/api.html#structccf_1_1endpoints_1_1Endpoint"><span class="std std-ref">Endpoint</span></a> forwarding policy. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9endpoints18EndpointProperties25execute_outside_consensusE">
+<span id="_CPPv3N3ccf9endpoints18EndpointProperties25execute_outside_consensusE"></span><span id="_CPPv2N3ccf9endpoints18EndpointProperties25execute_outside_consensusE"></span><span id="ccf::endpoints::EndpointProperties::execute_outside_consensus__ExecuteOutsideConsensus"></span><span class="target" id="structccf_1_1endpoints_1_1EndpointProperties_1a59c2e28f9653ca74ca63b398c75eb9de"></span><a class="reference internal" href="#_CPPv4N3ccf9endpoints23ExecuteOutsideConsensusE" title="ccf::endpoints::ExecuteOutsideConsensus"><span class="pre">ExecuteOutsideConsensus</span></a> <code class="sig-name descname"><span class="pre">execute_outside_consensus</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4N3ccf9endpoints23ExecuteOutsideConsensusE" title="ccf::endpoints::ExecuteOutsideConsensus"><span class="pre">ExecuteOutsideConsensus</span></a><span class="pre">::</span><a class="reference internal" href="#_CPPv4N3ccf9endpoints23ExecuteOutsideConsensus5NeverE" title="ccf::endpoints::ExecuteOutsideConsensus::Never"><span class="pre">Never</span></a><a class="headerlink" href="#_CPPv4N3ccf9endpoints18EndpointProperties25execute_outside_consensusE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execution policy. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9endpoints18EndpointProperties14authn_policiesE">
+<span id="_CPPv3N3ccf9endpoints18EndpointProperties14authn_policiesE"></span><span id="_CPPv2N3ccf9endpoints18EndpointProperties14authn_policiesE"></span><span id="ccf::endpoints::EndpointProperties::authn_policies__std::vector:ss:"></span><span class="target" id="structccf_1_1endpoints_1_1EndpointProperties_1aa98920eac28e2baa7ec2d02ed57c5518"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">std</span><span class="pre">::</span><span class="pre">string</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">authn_policies</span></code> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N3ccf9endpoints18EndpointProperties14authn_policiesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Authentication policies. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9endpoints18EndpointProperties7openapiE">
+<span id="_CPPv3N3ccf9endpoints18EndpointProperties7openapiE"></span><span id="_CPPv2N3ccf9endpoints18EndpointProperties7openapiE"></span><span id="ccf::endpoints::EndpointProperties::openapi__nlohmann::json"></span><span class="target" id="structccf_1_1endpoints_1_1EndpointProperties_1a06b6cf9bb68c758a2d90fbc4de496b45"></span><span class="pre">nlohmann</span><span class="pre">::</span><span class="pre">json</span> <code class="sig-name descname"><span class="pre">openapi</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints18EndpointProperties7openapiE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>OpenAPI schema for endpoint. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9endpoints18EndpointProperties9js_moduleE">
+<span id="_CPPv3N3ccf9endpoints18EndpointProperties9js_moduleE"></span><span id="_CPPv2N3ccf9endpoints18EndpointProperties9js_moduleE"></span><span id="ccf::endpoints::EndpointProperties::js_module__ss"></span><span class="target" id="structccf_1_1endpoints_1_1EndpointProperties_1a1a9fd8e9822901595b8e4c9944c632b6"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <code class="sig-name descname"><span class="pre">js_module</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints18EndpointProperties9js_moduleE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>JavaScript module. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf9endpoints18EndpointProperties11js_functionE">
+<span id="_CPPv3N3ccf9endpoints18EndpointProperties11js_functionE"></span><span id="_CPPv2N3ccf9endpoints18EndpointProperties11js_functionE"></span><span id="ccf::endpoints::EndpointProperties::js_function__ss"></span><span class="target" id="structccf_1_1endpoints_1_1EndpointProperties_1a41dfd19eee0554f872622bd657ddd4ae"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <code class="sig-name descname"><span class="pre">js_function</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints18EndpointProperties11js_functionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>JavaScript function name. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv4N3ccf9endpoints4ModeE">
+<span id="_CPPv3N3ccf9endpoints4ModeE"></span><span id="_CPPv2N3ccf9endpoints4ModeE"></span><span class="target" id="include_2ccf_2endpoint_8h_1a786b53964c23175bed27be8a3d9d7361"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><span class="pre">::</span><span class="pre">endpoints</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">Mode</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints4ModeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf9endpoints4Mode9ReadWriteE">
+<span id="_CPPv3N3ccf9endpoints4Mode9ReadWriteE"></span><span id="_CPPv2N3ccf9endpoints4Mode9ReadWriteE"></span><span class="target" id="dummy_1a786b53964c23175bed27be8a3d9d7361a70a2a84088d405a2e3f1e3accaa16723"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">ReadWrite</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints4Mode9ReadWriteE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf9endpoints4Mode8ReadOnlyE">
+<span id="_CPPv3N3ccf9endpoints4Mode8ReadOnlyE"></span><span id="_CPPv2N3ccf9endpoints4Mode8ReadOnlyE"></span><span class="target" id="dummy_1a786b53964c23175bed27be8a3d9d7361a131fb182a881796e7606ed6da27f1197"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">ReadOnly</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints4Mode8ReadOnlyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf9endpoints4Mode10HistoricalE">
+<span id="_CPPv3N3ccf9endpoints4Mode10HistoricalE"></span><span id="_CPPv2N3ccf9endpoints4Mode10HistoricalE"></span><span class="target" id="dummy_1a786b53964c23175bed27be8a3d9d7361a1df940294e43cce1f43fe5cd4e103b94"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Historical</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints4Mode10HistoricalE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv4N3ccf9endpoints18ForwardingRequiredE">
+<span id="_CPPv3N3ccf9endpoints18ForwardingRequiredE"></span><span id="_CPPv2N3ccf9endpoints18ForwardingRequiredE"></span><span class="target" id="include_2ccf_2endpoint_8h_1afce9c333e82b5cc712beaf2f937b47f6"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><span class="pre">::</span><span class="pre">endpoints</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">ForwardingRequired</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints18ForwardingRequiredE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf9endpoints18ForwardingRequired9SometimesE">
+<span id="_CPPv3N3ccf9endpoints18ForwardingRequired9SometimesE"></span><span id="_CPPv2N3ccf9endpoints18ForwardingRequired9SometimesE"></span><span class="target" id="dummy_1afce9c333e82b5cc712beaf2f937b47f6a40f887f0666ba1aa10b835aca44807d1"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Sometimes</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints18ForwardingRequired9SometimesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf9endpoints18ForwardingRequired6AlwaysE">
+<span id="_CPPv3N3ccf9endpoints18ForwardingRequired6AlwaysE"></span><span id="_CPPv2N3ccf9endpoints18ForwardingRequired6AlwaysE"></span><span class="target" id="dummy_1afce9c333e82b5cc712beaf2f937b47f6a68eec46437c384d8dad18d5464ebc35c"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Always</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints18ForwardingRequired6AlwaysE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf9endpoints18ForwardingRequired5NeverE">
+<span id="_CPPv3N3ccf9endpoints18ForwardingRequired5NeverE"></span><span id="_CPPv2N3ccf9endpoints18ForwardingRequired5NeverE"></span><span class="target" id="dummy_1afce9c333e82b5cc712beaf2f937b47f6a6e7b34fa59e1bd229b207892956dc41c"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Never</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints18ForwardingRequired5NeverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv4N3ccf9endpoints23ExecuteOutsideConsensusE">
+<span id="_CPPv3N3ccf9endpoints23ExecuteOutsideConsensusE"></span><span id="_CPPv2N3ccf9endpoints23ExecuteOutsideConsensusE"></span><span class="target" id="include_2ccf_2endpoint_8h_1a7b10e9bcd4294f12f14da62c978a7c04"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><span class="pre">::</span><span class="pre">endpoints</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">ExecuteOutsideConsensus</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints23ExecuteOutsideConsensusE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf9endpoints23ExecuteOutsideConsensus5NeverE">
+<span id="_CPPv3N3ccf9endpoints23ExecuteOutsideConsensus5NeverE"></span><span id="_CPPv2N3ccf9endpoints23ExecuteOutsideConsensus5NeverE"></span><span class="target" id="dummy_1a7b10e9bcd4294f12f14da62c978a7c04a6e7b34fa59e1bd229b207892956dc41c"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Never</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints23ExecuteOutsideConsensus5NeverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf9endpoints23ExecuteOutsideConsensus7LocallyE">
+<span id="_CPPv3N3ccf9endpoints23ExecuteOutsideConsensus7LocallyE"></span><span id="_CPPv2N3ccf9endpoints23ExecuteOutsideConsensus7LocallyE"></span><span class="target" id="dummy_1a7b10e9bcd4294f12f14da62c978a7c04a2db29feca78ba722efc29c4a0944cf8f"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Locally</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints23ExecuteOutsideConsensus7LocallyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf9endpoints23ExecuteOutsideConsensus7PrimaryE">
+<span id="_CPPv3N3ccf9endpoints23ExecuteOutsideConsensus7PrimaryE"></span><span id="_CPPv2N3ccf9endpoints23ExecuteOutsideConsensus7PrimaryE"></span><span class="target" id="dummy_1a7b10e9bcd4294f12f14da62c978a7c04a074de7e7c226d5c60f8af14c20725352"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Primary</span></code><a class="headerlink" href="#_CPPv4N3ccf9endpoints23ExecuteOutsideConsensus7PrimaryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="tls-ca-cert-bundles">
+<h3><code class="docutils literal notranslate"><span class="pre">tls.ca_cert_bundles</span></code><a class="headerlink" href="#tls-ca-cert-bundles" title="Permalink to this headline">¶</a></h3>
+<p>CA cert bundle storage table, these bundles are used to authenticate connections to JWT issuers.</p>
+<p><strong>Key</strong> Bundle name, represented as a string.</p>
+<p><strong>Value</strong> Cert bundle, represented as a PEM-encoded string.</p>
+</section>
+<section id="jwt-issuers">
+<h3><code class="docutils literal notranslate"><span class="pre">jwt.issuers</span></code><a class="headerlink" href="#jwt-issuers" title="Permalink to this headline">¶</a></h3>
+<p>JWT issuers.</p>
+<p><strong>Key</strong> JWT issuer URL, represented as a string.</p>
+<p><strong>Value</strong> Represented as JSON.</p>
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf17JwtIssuerMetadataE">
+<span id="_CPPv3N3ccf17JwtIssuerMetadataE"></span><span id="_CPPv2N3ccf17JwtIssuerMetadataE"></span><span id="ccf::JwtIssuerMetadata"></span><span class="target" id="structccf_1_1JwtIssuerMetadata"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">JwtIssuerMetadata</span></code><a class="headerlink" href="#_CPPv4N3ccf17JwtIssuerMetadataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf17JwtIssuerMetadata10key_filterE">
+<span id="_CPPv3N3ccf17JwtIssuerMetadata10key_filterE"></span><span id="_CPPv2N3ccf17JwtIssuerMetadata10key_filterE"></span><span id="ccf::JwtIssuerMetadata::key_filter__JwtIssuerKeyFilter"></span><span class="target" id="structccf_1_1JwtIssuerMetadata_1ae2af7ef03e49c15015e0ba55e0983b61"></span><a class="reference internal" href="#_CPPv4N3ccf18JwtIssuerKeyFilterE" title="ccf::JwtIssuerKeyFilter"><span class="pre">JwtIssuerKeyFilter</span></a> <code class="sig-name descname"><span class="pre">key_filter</span></code><a class="headerlink" href="#_CPPv4N3ccf17JwtIssuerMetadata10key_filterE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>JWT issuer key filter. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf17JwtIssuerMetadata10key_policyE">
+<span id="_CPPv3N3ccf17JwtIssuerMetadata10key_policyE"></span><span id="_CPPv2N3ccf17JwtIssuerMetadata10key_policyE"></span><span id="ccf::JwtIssuerMetadata::key_policy__std::optional:JwtIssuerKeyPolicy:"></span><span class="target" id="structccf_1_1JwtIssuerMetadata_1ac3e077a6c8c93bd90549ff0d6dda8a17"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">optional</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N3ccf18JwtIssuerKeyPolicyE" title="ccf::JwtIssuerKeyPolicy"><span class="pre">JwtIssuerKeyPolicy</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">key_policy</span></code><a class="headerlink" href="#_CPPv4N3ccf17JwtIssuerMetadata10key_policyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional Key Policy. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf17JwtIssuerMetadata19ca_cert_bundle_nameE">
+<span id="_CPPv3N3ccf17JwtIssuerMetadata19ca_cert_bundle_nameE"></span><span id="_CPPv2N3ccf17JwtIssuerMetadata19ca_cert_bundle_nameE"></span><span id="ccf::JwtIssuerMetadata::ca_cert_bundle_name__std::optional:ss:"></span><span class="target" id="structccf_1_1JwtIssuerMetadata_1aa5e8e36b1efe016a2d3cab5c5772cbc7"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">optional</span><span class="pre">&lt;</span><span class="pre">std</span><span class="pre">::</span><span class="pre">string</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">ca_cert_bundle_name</span></code><a class="headerlink" href="#_CPPv4N3ccf17JwtIssuerMetadata19ca_cert_bundle_nameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional CA bundle name used for authentication when auto-refreshing. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf17JwtIssuerMetadata12auto_refreshE">
+<span id="_CPPv3N3ccf17JwtIssuerMetadata12auto_refreshE"></span><span id="_CPPv2N3ccf17JwtIssuerMetadata12auto_refreshE"></span><span id="ccf::JwtIssuerMetadata::auto_refresh__b"></span><span class="target" id="structccf_1_1JwtIssuerMetadata_1a8ae412228fdca366867ecdca641a3ef8"></span><span class="pre">bool</span> <code class="sig-name descname"><span class="pre">auto_refresh</span></code> <span class="pre">=</span> <span class="pre">false</span><a class="headerlink" href="#_CPPv4N3ccf17JwtIssuerMetadata12auto_refreshE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Whether to auto-refresh keys from the issuer. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv4N3ccf18JwtIssuerKeyFilterE">
+<span id="_CPPv3N3ccf18JwtIssuerKeyFilterE"></span><span id="_CPPv2N3ccf18JwtIssuerKeyFilterE"></span><span class="target" id="jwt_8h_1a8fcc14f7396a09715557852a9a99ce7b"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">JwtIssuerKeyFilter</span></code><a class="headerlink" href="#_CPPv4N3ccf18JwtIssuerKeyFilterE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf18JwtIssuerKeyFilter3AllE">
+<span id="_CPPv3N3ccf18JwtIssuerKeyFilter3AllE"></span><span id="_CPPv2N3ccf18JwtIssuerKeyFilter3AllE"></span><span class="target" id="dummy_1a8fcc14f7396a09715557852a9a99ce7bab1c94ca2fbc3e78fc30069c8d0f01680"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">All</span></code><a class="headerlink" href="#_CPPv4N3ccf18JwtIssuerKeyFilter3AllE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N3ccf18JwtIssuerKeyFilter3SGXE">
+<span id="_CPPv3N3ccf18JwtIssuerKeyFilter3SGXE"></span><span id="_CPPv2N3ccf18JwtIssuerKeyFilter3SGXE"></span><span class="target" id="dummy_1a8fcc14f7396a09715557852a9a99ce7ba040c2c86f27b569b907565f2895fffd7"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">SGX</span></code><a class="headerlink" href="#_CPPv4N3ccf18JwtIssuerKeyFilter3SGXE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf18JwtIssuerKeyPolicyE">
+<span id="_CPPv3N3ccf18JwtIssuerKeyPolicyE"></span><span id="_CPPv2N3ccf18JwtIssuerKeyPolicyE"></span><span id="ccf::JwtIssuerKeyPolicy"></span><span class="target" id="structccf_1_1JwtIssuerKeyPolicy"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">JwtIssuerKeyPolicy</span></code><a class="headerlink" href="#_CPPv4N3ccf18JwtIssuerKeyPolicyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf18JwtIssuerKeyPolicy10sgx_claimsE">
+<span id="_CPPv3N3ccf18JwtIssuerKeyPolicy10sgx_claimsE"></span><span id="_CPPv2N3ccf18JwtIssuerKeyPolicy10sgx_claimsE"></span><span id="ccf::JwtIssuerKeyPolicy::sgx_claims__std::optional:std::map:ss.ss::"></span><span class="target" id="structccf_1_1JwtIssuerKeyPolicy_1a0d9402ce03407c411d701c6a01b5c07f"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">optional</span><span class="pre">&lt;</span><span class="pre">std</span><span class="pre">::</span><span class="pre">map</span><span class="pre">&lt;</span><span class="pre">std</span><span class="pre">::</span><span class="pre">string</span><span class="pre">,</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">string</span><span class="pre">&gt;</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">sgx_claims</span></code><a class="headerlink" href="#_CPPv4N3ccf18JwtIssuerKeyPolicy10sgx_claimsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>OE claim name -&gt; hex-encoded claim value See openenclave/attestation/verifier.h </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="jwt-public-signing-keys">
+<h3><code class="docutils literal notranslate"><span class="pre">jwt.public_signing_keys</span></code><a class="headerlink" href="#jwt-public-signing-keys" title="Permalink to this headline">¶</a></h3>
+<p>JWT signing keys.</p>
+<p><strong>Key</strong> JWT Key ID, represented as a string.</p>
+<p><strong>Value</strong> JWT public key or certificate, represented as a PEM-encoded string.</p>
+</section>
+<section id="jwt-public-signing-key-issuer">
+<h3><code class="docutils literal notranslate"><span class="pre">jwt.public_signing_key_issuer</span></code><a class="headerlink" href="#jwt-public-signing-key-issuer" title="Permalink to this headline">¶</a></h3>
+<p>JWT signing key to Issuer mapping.</p>
+<p><strong>Key</strong> JWT Key ID, represented as a string.</p>
+<p><strong>Value</strong> JWT issuer URL, represented as a string.</p>
+</section>
+<section id="constitution">
+<h3><code class="docutils literal notranslate"><span class="pre">constitution</span></code><a class="headerlink" href="#constitution" title="Permalink to this headline">¶</a></h3>
+<p>Service constitution: JavaScript module, exporting <code class="docutils literal notranslate"><span class="pre">validate()</span></code>, <code class="docutils literal notranslate"><span class="pre">resolve()</span></code> and <code class="docutils literal notranslate"><span class="pre">apply()</span></code>.</p>
+<p><strong>Key</strong> Sentinel value 0, represented as a little-endian 64-bit unsigned integer.</p>
+<p><strong>Value</strong> JavaScript module, represented as a string.</p>
+</section>
+<section id="history">
+<h3><code class="docutils literal notranslate"><span class="pre">history</span></code><a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h3>
+<p>Governance history of the service, captures all governance requests submitted by members.</p>
+<p><strong>Key</strong> Member ID: SHA-256 fingerprint of the member certificate, represented as a hex-encoded string.</p>
+<p><strong>Value</strong> Represented as JSON.</p>
+<p>See <a class="reference internal" href="#_CPPv4N3ccf9SignedReqE" title="ccf::SignedReq"><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">ccf::SignedReq</span></code></a></p>
+</section>
+</section>
+<section id="public-ccf-internal">
+<h2><code class="docutils literal notranslate"><span class="pre">public:ccf.internal.</span></code><a class="headerlink" href="#public-ccf-internal" title="Permalink to this headline">¶</a></h2>
+<section id="values">
+<h3><code class="docutils literal notranslate"><span class="pre">values</span></code><a class="headerlink" href="#values" title="Permalink to this headline">¶</a></h3>
+<p>Deprecated, only used to create monotonic node ids when CCF is configured to use BFT at the moment. Will be removed once BFT is adapted to use the same node ids as CFT.</p>
+</section>
+<section id="historical-encrypted-ledger-secret">
+<h3><code class="docutils literal notranslate"><span class="pre">historical_encrypted_ledger_secret</span></code><a class="headerlink" href="#historical-encrypted-ledger-secret" title="Permalink to this headline">¶</a></h3>
+<p>On each rekey, the old ledger secret is stored in this table , encrypted with the new secret.</p>
+<p>While the contents themselves are encrypted, the table is public so as to be accessible by a node bootstrapping a recovery service.</p>
+</section>
+<section id="encrypted-ledger-secrets">
+<h3><code class="docutils literal notranslate"><span class="pre">encrypted_ledger_secrets</span></code><a class="headerlink" href="#encrypted-ledger-secrets" title="Permalink to this headline">¶</a></h3>
+<p>Used to broadcast ledger secrets between nodes during a recovery.</p>
+<p>While the contents themselves are encrypted, the table is public so as to be accessible by a node bootstrapping a recovery service.</p>
+</section>
+<section id="tree">
+<h3><code class="docutils literal notranslate"><span class="pre">tree</span></code><a class="headerlink" href="#tree" title="Permalink to this headline">¶</a></h3>
+<p>On every signature transaction, this contains the serialised Merkle Tree for the ledger, between the previous signature and this onen</p>
+<p>This is used to generate receipts for historical transactions without having the recompute hashes.</p>
+</section>
+<section id="signatures">
+<h3><code class="docutils literal notranslate"><span class="pre">signatures</span></code><a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h3>
+<p>Signatures emitted by the primary node at regular interval, over the root of the Merkle Tree at that sequence number.</p>
+<p><strong>Key</strong> Sentinel value 0, represented as a little-endian 64-bit unsigned integer.</p>
+<p><strong>Value</strong></p>
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf16PrimarySignatureE">
+<span id="_CPPv3N3ccf16PrimarySignatureE"></span><span id="_CPPv2N3ccf16PrimarySignatureE"></span><span id="ccf::PrimarySignature"></span><span class="target" id="structccf_1_1PrimarySignature"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">PrimarySignature</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">ccf</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N3ccf13NodeSignatureE" title="ccf::NodeSignature"><span class="pre">NodeSignature</span></a><a class="headerlink" href="#_CPPv4N3ccf16PrimarySignatureE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf16PrimarySignature5seqnoE">
+<span id="_CPPv3N3ccf16PrimarySignature5seqnoE"></span><span id="_CPPv2N3ccf16PrimarySignature5seqnoE"></span><span id="ccf::PrimarySignature::seqno__ccf::SeqNo"></span><span class="target" id="structccf_1_1PrimarySignature_1addf75ca686d29bdea724313320c87044"></span><span class="pre">ccf</span><span class="pre">::</span><a class="reference internal" href="../build_apps/api.html#_CPPv4N3ccf5SeqNoE" title="ccf::SeqNo"><span class="pre">SeqNo</span></a> <code class="sig-name descname"><span class="pre">seqno</span></code> <span class="pre">=</span> <span class="pre">0</span><a class="headerlink" href="#_CPPv4N3ccf16PrimarySignature5seqnoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sequence number of the signature transaction. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf16PrimarySignature4viewE">
+<span id="_CPPv3N3ccf16PrimarySignature4viewE"></span><span id="_CPPv2N3ccf16PrimarySignature4viewE"></span><span id="ccf::PrimarySignature::view__ccf::View"></span><span class="target" id="structccf_1_1PrimarySignature_1a34a891c46b8be393ebb20a3286848563"></span><span class="pre">ccf</span><span class="pre">::</span><a class="reference internal" href="../build_apps/api.html#_CPPv4N3ccf4ViewE" title="ccf::View"><span class="pre">View</span></a> <code class="sig-name descname"><span class="pre">view</span></code> <span class="pre">=</span> <span class="pre">0</span><a class="headerlink" href="#_CPPv4N3ccf16PrimarySignature4viewE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>View of the signature transaction. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf16PrimarySignature12commit_seqnoE">
+<span id="_CPPv3N3ccf16PrimarySignature12commit_seqnoE"></span><span id="_CPPv2N3ccf16PrimarySignature12commit_seqnoE"></span><span id="ccf::PrimarySignature::commit_seqno__ccf::SeqNo"></span><span class="target" id="structccf_1_1PrimarySignature_1aba43d379c50f84884d001742dcfcbb97"></span><span class="pre">ccf</span><span class="pre">::</span><a class="reference internal" href="../build_apps/api.html#_CPPv4N3ccf5SeqNoE" title="ccf::SeqNo"><span class="pre">SeqNo</span></a> <code class="sig-name descname"><span class="pre">commit_seqno</span></code> <span class="pre">=</span> <span class="pre">0</span><a class="headerlink" href="#_CPPv4N3ccf16PrimarySignature12commit_seqnoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Committed sequence number when the signature transaction was emitted. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf16PrimarySignature11commit_viewE">
+<span id="_CPPv3N3ccf16PrimarySignature11commit_viewE"></span><span id="_CPPv2N3ccf16PrimarySignature11commit_viewE"></span><span id="ccf::PrimarySignature::commit_view__ccf::View"></span><span class="target" id="structccf_1_1PrimarySignature_1ac91c6c24330bd45d64f6523a41c34c06"></span><span class="pre">ccf</span><span class="pre">::</span><a class="reference internal" href="../build_apps/api.html#_CPPv4N3ccf4ViewE" title="ccf::View"><span class="pre">View</span></a> <code class="sig-name descname"><span class="pre">commit_view</span></code> <span class="pre">=</span> <span class="pre">0</span><a class="headerlink" href="#_CPPv4N3ccf16PrimarySignature11commit_viewE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>View of the committed sequence number when the signature transaction was emitted </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf16PrimarySignature4rootE">
+<span id="_CPPv3N3ccf16PrimarySignature4rootE"></span><span id="_CPPv2N3ccf16PrimarySignature4rootE"></span><span id="ccf::PrimarySignature::root__crypto::Sha256Hash"></span><span class="target" id="structccf_1_1PrimarySignature_1a74508825c7aeacb2b54d14d8f692e74f"></span><span class="pre">crypto</span><span class="pre">::</span><span class="pre">Sha256Hash</span> <code class="sig-name descname"><span class="pre">root</span></code><a class="headerlink" href="#_CPPv4N3ccf16PrimarySignature4rootE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Root of the Merkle Tree as of seqno - 1. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf13NodeSignatureE">
+<span id="_CPPv3N3ccf13NodeSignatureE"></span><span id="_CPPv2N3ccf13NodeSignatureE"></span><span id="ccf::NodeSignature"></span><span class="target" id="structccf_1_1NodeSignature"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">NodeSignature</span></code><a class="headerlink" href="#_CPPv4N3ccf13NodeSignatureE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Subclassed by ccf::BftNodeSignature, <a class="reference internal" href="#structccf_1_1PrimarySignature"><span class="std std-ref">ccf::PrimarySignature</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf13NodeSignature3sigE">
+<span id="_CPPv3N3ccf13NodeSignature3sigE"></span><span id="_CPPv2N3ccf13NodeSignature3sigE"></span><span id="ccf::NodeSignature::sig__std::vector:uint8_t:"></span><span class="target" id="structccf_1_1NodeSignature_1abfc591f6510a87465c08a5c88199e5ed"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">uint8_t</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">sig</span></code><a class="headerlink" href="#_CPPv4N3ccf13NodeSignature3sigE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Signature. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf13NodeSignature4nodeE">
+<span id="_CPPv3N3ccf13NodeSignature4nodeE"></span><span id="_CPPv2N3ccf13NodeSignature4nodeE"></span><span id="ccf::NodeSignature::node__NodeId"></span><span class="target" id="structccf_1_1NodeSignature_1ac55fab0456865e5c3310c6e942233ac6"></span><span class="pre">NodeId</span> <code class="sig-name descname"><span class="pre">node</span></code><a class="headerlink" href="#_CPPv4N3ccf13NodeSignature4nodeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Node ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf13NodeSignature12hashed_nonceE">
+<span id="_CPPv3N3ccf13NodeSignature12hashed_nonceE"></span><span id="_CPPv2N3ccf13NodeSignature12hashed_nonceE"></span><span id="ccf::NodeSignature::hashed_nonce__Nonce"></span><span class="target" id="structccf_1_1NodeSignature_1a4c8c12638fe9bf89ca2cecd40266eb62"></span><span class="pre">Nonce</span> <code class="sig-name descname"><span class="pre">hashed_nonce</span></code><a class="headerlink" href="#_CPPv4N3ccf13NodeSignature12hashed_nonceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Hashed nonce created by the node, only used for BFT. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="recovery-shares">
+<h3><code class="docutils literal notranslate"><span class="pre">recovery_shares</span></code><a class="headerlink" href="#recovery-shares" title="Permalink to this headline">¶</a></h3>
+<p>Members’ recovery_shares, encrypted by the keys recorded in <code class="docutils literal notranslate"><span class="pre">members.encryption_public_keys</span></code>.</p>
+<p>While the contents themselves are encrypted, the table is public so as to be accessible by nodes bootstrapping a recovery service.</p>
+</section>
+<section id="snapshot-evidence">
+<h3><code class="docutils literal notranslate"><span class="pre">snapshot_evidence</span></code><a class="headerlink" href="#snapshot-evidence" title="Permalink to this headline">¶</a></h3>
+<p>Evidence inserted in the ledger by a primary producing a snapshot to establish provenance.</p>
+<p><strong>Key</strong> Sentinel value 0, represented as a little-endian 64-bit unsigned integer.</p>
+<p><strong>Value</strong></p>
+<dl class="cpp struct">
+<dt id="_CPPv4N3ccf12SnapshotHashE">
+<span id="_CPPv3N3ccf12SnapshotHashE"></span><span id="_CPPv2N3ccf12SnapshotHashE"></span><span id="ccf::SnapshotHash"></span><span class="target" id="structccf_1_1SnapshotHash"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">ccf</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">SnapshotHash</span></code><a class="headerlink" href="#_CPPv4N3ccf12SnapshotHashE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf12SnapshotHash4hashE">
+<span id="_CPPv3N3ccf12SnapshotHash4hashE"></span><span id="_CPPv2N3ccf12SnapshotHash4hashE"></span><span id="ccf::SnapshotHash::hash__crypto::Sha256Hash"></span><span class="target" id="structccf_1_1SnapshotHash_1a3e3c4e17ceb247004dcb8ae1611da42c"></span><span class="pre">crypto</span><span class="pre">::</span><span class="pre">Sha256Hash</span> <code class="sig-name descname"><span class="pre">hash</span></code><a class="headerlink" href="#_CPPv4N3ccf12SnapshotHash4hashE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Snapshot digest. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N3ccf12SnapshotHash7versionE">
+<span id="_CPPv3N3ccf12SnapshotHash7versionE"></span><span id="_CPPv2N3ccf12SnapshotHash7versionE"></span><span id="ccf::SnapshotHash::version__kv::Version"></span><span class="target" id="structccf_1_1SnapshotHash_1a8c54aeb21533523566e1bd0a056d234b"></span><span class="pre">kv</span><span class="pre">::</span><a class="reference internal" href="../build_apps/kv/api.html#_CPPv4N2kv7VersionE" title="kv::Version"><span class="pre">Version</span></a> <code class="sig-name descname"><span class="pre">version</span></code><a class="headerlink" href="#_CPPv4N3ccf12SnapshotHash7versionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sequence number to which the snapshot corresponds. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="encrypted-submitted-shares">
+<h3><code class="docutils literal notranslate"><span class="pre">encrypted_submitted_shares</span></code><a class="headerlink" href="#encrypted-submitted-shares" title="Permalink to this headline">¶</a></h3>
+<p>Used to persist submitted shares during a recovery.</p>
+<p>While the contents themselves are encrypted, the table is public so as to be accessible by nodes bootstrapping a recovery service.</p>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Audit</a>
+    <a class='right-next' id="next-link" href="merkle_tree.html" title="next page">Merkle Tree</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018, Microsoft Research.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,532 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Build and Sign CCF Applications &#8212; CCF  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running CCF Applications" href="run_app.html" />
+    <link rel="prev" title="JavaScript Application Bundle" href="js_app_bundle.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/ccf.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../overview/index.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Build Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../use_apps/index.html">
+  Use Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../operations/index.html">
+  Operations
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../governance/index.html">
+  Governance
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../audit/index.html">
+  Audit
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contribute/index.html">
+  Contribute
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../glossary.html">
+  Glossary
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/Microsoft/CCF" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="create_vm.html">
+   Create Azure SGX VM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="install_bin.html">
+   Install CCF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="build_setup.html">
+   CCF Development Setup
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="example.html">
+   C++ Application
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logging_cpp.html">
+     Logging (C++)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logging_rpc_api.html">
+     Logging RPC API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logging.html">
+     Logging
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="js_app.html">
+   JavaScript Application
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="js_app_ts.html">
+     TypeScript Application
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="js_app_tsoa.html">
+     TypeScript Application using tsoa
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="js_app_bundle.html">
+     JavaScript Application Bundle
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="js_app_ts.html">
+       TypeScript Application
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="js_app_tsoa.html">
+       TypeScript Application using tsoa
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Build and Sign CCF Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="run_app.html">
+   Running CCF Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="demo.html">
+   End-to-end demo
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="auth/index.html">
+   User Authentication
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="auth/jwt.html">
+     JWT Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="auth/cert.html">
+     Certificate Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="auth/jwt_ms_example.html">
+     JWT Authentication example using Microsoft Identity Platform
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="kv/index.html">
+   Key-Value Store
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="kv/kv_how_to.html">
+     Key-Value Store How-To
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="kv/kv_serialisation.html">
+     Key-Value Serialisation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="kv/api.html">
+     Key-Value Store API
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="upgrading_app.html">
+   Upgrade Your Application
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api.html">
+   Developer API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="crypto.html">
+   Cryptography API
+  </a>
+ </li>
+</ul>
+
+  </div>
+
+  
+  <h6> Versions </h6>
+  <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+      <option value="../../main/build_apps/build_app.html">main </option>
+      <option value="build_app.html">ccf-1.0.0 </option>
+  </select>
+  
+</nav><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standalone-signing">
+   Standalone Signing
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/build_apps/build_app.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="build-and-sign-ccf-applications">
+<h1>Build and Sign CCF Applications<a class="headerlink" href="#build-and-sign-ccf-applications" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before building a CCF application, make sure that:</p>
+<ul class="simple">
+<li><p>The CCF development environment has successfully been setup (see <a class="reference internal" href="build_setup.html"><span class="doc">CCF Development Setup</span></a>).</p></li>
+<li><p>CCF is installed (see <a class="reference internal" href="install_bin.html"><span class="doc">Install CCF</span></a>).</p></li>
+</ul>
+</div>
+<p>Once an application is complete, it needs to be built into a shared object, and signed.</p>
+<p>Using <cite>cmake</cite>, an application can be built and then signed using the functions provided by CCF’s <code class="docutils literal notranslate"><span class="pre">cmake/ccf.cmake</span></code>. For example, for the <code class="docutils literal notranslate"><span class="pre">js_generic</span></code> JavaScript application:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_ccf_app</span><span class="p">(</span>
+  <span class="s">js_generic</span>
+  <span class="s">SRCS</span> <span class="o">${</span><span class="nv">CCF_DIR</span><span class="o">}</span><span class="s">/src/apps/js_generic/js_generic.cpp</span>
+  <span class="s">LINK_LIBS_ENCLAVE</span> <span class="s">quickjs.enclave</span> <span class="s">-lgcc</span>
+  <span class="s">LINK_LIBS_VIRTUAL</span> <span class="s">quickjs.host</span> <span class="s">INSTALL_LIBS</span> <span class="s">ON</span>
+<span class="p">)</span>
+<span class="nb">sign_app_library</span><span class="p">(</span>
+  <span class="s">js_generic.enclave</span> <span class="o">${</span><span class="nv">CCF_DIR</span><span class="o">}</span><span class="s">/src/apps/js_generic/oe_sign.conf</span>
+  <span class="o">${</span><span class="nv">CMAKE_CURRENT_BINARY_DIR</span><span class="o">}</span><span class="s">/signing_key.pem</span> <span class="s">INSTALL_LIBS</span> <span class="s">ON</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../glossary.html#term-Open-Enclave"><span class="xref std std-term">Open Enclave</span></a> configuration file (<code class="docutils literal notranslate"><span class="pre">oe_sign.conf</span></code>) should be placed under the same directory as the source files for the application. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enclave settings:</span>
+<span class="n">NumHeapPages</span><span class="o">=</span><span class="mi">50000</span>
+<span class="n">NumStackPages</span><span class="o">=</span><span class="mi">1024</span>
+<span class="n">NumTCS</span><span class="o">=</span><span class="mi">8</span>
+<span class="n">ProductID</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">SecurityVersion</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">Debug</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference external" href="https://github.com/openenclave/openenclave/blob/main/docs/GettingStartedDocs/buildandsign.md#signing-an-SGX-enclave">Open Enclave documentation</a> provides details about the enclave settings in the <code class="docutils literal notranslate"><span class="pre">oe_sign.conf</span></code> configuration file.</p>
+</div>
+<section id="standalone-signing">
+<h2>Standalone Signing<a class="headerlink" href="#standalone-signing" title="Permalink to this headline">¶</a></h2>
+<p>It is also possible to sign an existing enclave application (e.g. <code class="docutils literal notranslate"><span class="pre">libjs_generic.enclave.so</span></code>) manually, using a signing key (specified by <code class="docutils literal notranslate"><span class="pre">--key-file</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ openssl genrsa -out signing_key.pem -3 <span class="m">3072</span>
+$ /opt/openenclave/bin/oesign sign --enclave-image libjs_generic.enclave.so --config-file CCF/src/apps/js_generic/oe_sign.conf --key-file signing_key.pem
+Created libjs_generic.enclave.so.signed
+$ ls *.so.signed
+libjs_generic.enclave.so.signed
+</pre></div>
+</div>
+<p>It is then possible to inspect the signed enclave library:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ /opt/openenclave/bin/oesign dump --enclave-image libjs_generic.enclave.so.signed
+<span class="o">===</span> Entry point:
+<span class="nv">name</span><span class="o">=</span>_start
+<span class="nv">address</span><span class="o">=</span><span class="nv">00000000008dee48</span>
+
+<span class="o">===</span> SGX Enclave Properties:
+<span class="nv">product_id</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">security_version</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">debug</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">xfrm</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">num_heap_pages</span><span class="o">=</span><span class="m">32768</span>
+<span class="nv">num_stack_pages</span><span class="o">=</span><span class="m">1024</span>
+<span class="nv">num_tcs</span><span class="o">=</span><span class="m">8</span>
+<span class="nv">mrenclave</span><span class="o">=</span>3175971c02d00c1a8f9dd23ca89e64955c5caa94e24f4a3a0579dcfb2e6aebf9
+<span class="nv">signature</span><span class="o">=</span>...
+</pre></div>
+</div>
+<p>For a given application, the <code class="docutils literal notranslate"><span class="pre">signature</span></code> field depends on the key used to sign the enclave. See <a class="reference internal" href="../governance/common_member_operations.html#updating-code-version"><span class="std std-ref">Updating Code Version</span></a> for instructions on how members can register new application versions (<code class="docutils literal notranslate"><span class="pre">mrenclave</span></code> field).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference external" href="https://github.com/openenclave/openenclave/blob/main/docs/GettingStartedDocs/buildandsign.md#signing-an-SGX-enclave">Open Enclave documentation</a>. provides further details about how to sign enclave applications using <code class="docutils literal notranslate"><span class="pre">oesign</span></code>.</p>
+</div>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="js_app_bundle.html" title="previous page">JavaScript Application Bundle</a>
+    <a class='right-next' id="next-link" href="run_app.html" title="next page">Running CCF Applications</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018, Microsoft Research.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

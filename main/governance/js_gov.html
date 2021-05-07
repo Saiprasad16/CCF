@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>JavaScript Governance &#8212; CCF  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Audit" href="../audit/index.html" />
+    <link rel="prev" title="Member RPC API" href="member_rpc_api.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/ccf.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../overview/index.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../build_apps/index.html">
+  Build Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../use_apps/index.html">
+  Use Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../operations/index.html">
+  Operations
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Governance
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../audit/index.html">
+  Audit
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contribute/index.html">
+  Contribute
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../glossary.html">
+  Glossary
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/Microsoft/CCF" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="proposals.html">
+   Proposing and Voting for a Proposal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="open_network.html">
+   Opening a Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="accept_recovery.html">
+   Accepting Recovery and Submitting Shares
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="common_member_operations.html">
+   Common Governance Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="adding_member.html">
+   Adding New Members
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hsm_keys.html">
+   Using Member Keys Stored in HSM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="member_rpc_api.html">
+   Member RPC API
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   JavaScript Governance
+  </a>
+ </li>
+</ul>
+
+  </div>
+
+  
+  <h6> Versions </h6>
+  <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+      <option value="js_gov.html">main </option>
+      <option value="../../ccf-1.0.0/governance/js_gov.html">ccf-1.0.0 </option>
+  </select>
+  
+</nav><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#constitution">
+   Constitution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#upgrading-from-lua-to-js">
+   Upgrading from Lua to JS
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#upgrading-constitution">
+     Upgrading constitution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#upgrading-proposals-and-votes">
+     Upgrading proposals and votes
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/governance/js_gov.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="javascript-governance">
+<h1>JavaScript Governance<a class="headerlink" href="#javascript-governance" title="Permalink to this headline">¶</a></h1>
+<section id="constitution">
+<h2>Constitution<a class="headerlink" href="#constitution" title="Permalink to this headline">¶</a></h2>
+<p>The constitution for a CCF service is implemented as a set of JS scripts. These scripts can be submitted at network startup as <code class="docutils literal notranslate"><span class="pre">--constitution</span></code> args to <code class="docutils literal notranslate"><span class="pre">cchost</span></code>, or updated by a governance proposal. They will be concatenated into a single entry in the <code class="docutils literal notranslate"><span class="pre">public:ccf.gov.constitution</span></code> table, and should export 3 named functions:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">validate</span></code>: This takes the raw body of a proposal and checks that this proposal is correctly formed. For instance it may parse the body as JSON, extract the list of proposed actions, and confirm that each action is known and has parameters matching the expected schema. This should not interact with the KV, and should operate purely on the given proposal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resolve</span></code>: This takes a proposal and the votes (the results of ballot scripts) which have been submitted against it, and determines whether the proposal should be accepted or rejected. In the simple case this might simply accept proposals after a majority of members have voted in favour. It could also examine member data to give each member a different role or weight, or have different thresholds for each action. This has read-only access to the KV.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">apply</span></code>: This takes a proposal which has been accepted by <code class="docutils literal notranslate"><span class="pre">resolve</span></code>, and should make the proposed changes to the service’s state. For instance if the proposal added a new user this should extract their cert and data from the proposal and write them to the appropriate KV tables. This has full read-write access to the KV.</p></li>
+</ul>
+</div></blockquote>
+<p>Sample constitutions are available in the <a class="reference external" href="https://github.com/microsoft/CCF/tree/main/src/runtime_config">src/runtime_config directory</a>, for instance the default implementation of <code class="docutils literal notranslate"><span class="pre">apply</span></code> which parses a JSON object from the proposal body, and then delegates the application of each action within the proposal to a named entry from <code class="docutils literal notranslate"><span class="pre">actions.js</span></code>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span> <span class="kd">function</span> <span class="nx">apply</span><span class="p">(</span><span class="nx">proposal</span><span class="p">,</span> <span class="nx">proposalId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">proposed_actions</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">proposal</span><span class="p">)[</span><span class="s2">&quot;actions&quot;</span><span class="p">];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">proposed_action</span> <span class="k">of</span> <span class="nx">proposed_actions</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">definition</span> <span class="o">=</span> <span class="nx">actions</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">proposed_action</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="nx">definition</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">proposed_action</span><span class="p">.</span><span class="nx">args</span><span class="p">,</span> <span class="nx">proposalId</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>There are also more involved examples such as <code class="docutils literal notranslate"><span class="pre">veto/resolve.js</span></code>. This accepts proposals when a majority of members vote in favour, but also allows any single member to veto the proposal, marking it <code class="docutils literal notranslate"><span class="pre">Rejected</span></code> after a single vote against:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span> <span class="kd">function</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">proposal</span><span class="p">,</span> <span class="nx">proposerId</span><span class="p">,</span> <span class="nx">votes</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Every member has the ability to veto a proposal.</span>
+  <span class="c1">// If they vote against it, it is rejected.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">votes</span><span class="p">.</span><span class="nx">some</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="o">!</span><span class="nx">v</span><span class="p">.</span><span class="nx">vote</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">&quot;Rejected&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">memberVoteCount</span> <span class="o">=</span> <span class="nx">votes</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+
+  <span class="kd">let</span> <span class="nx">activeMemberCount</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
+  <span class="nx">ccf</span><span class="p">.</span><span class="nx">kv</span><span class="p">[</span><span class="s2">&quot;public:ccf.gov.members.info&quot;</span><span class="p">].</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">info</span> <span class="o">=</span> <span class="nx">ccf</span><span class="p">.</span><span class="nx">bufToJsonCompatible</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="s2">&quot;Active&quot;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">activeMemberCount</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+
+  <span class="c1">// A majority of members can accept a proposal.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">memberVoteCount</span> <span class="o">&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">activeMemberCount</span> <span class="o">/</span> <span class="mf">2</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">&quot;Accepted&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="s2">&quot;Open&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="upgrading-from-lua-to-js">
+<h2>Upgrading from Lua to JS<a class="headerlink" href="#upgrading-from-lua-to-js" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">0.99.0</span></code> release of CCF supports both Lua and JS governance. You should be able to upgrade to this release with your existing Lua governance tooling, then separately migrate to the JS governance, in preparation for the <code class="docutils literal notranslate"><span class="pre">1.0</span></code> release where Lua governance will be removed. To migrate, you will need to upgrade your constitution, your proposals, and your votes.</p>
+<section id="upgrading-constitution">
+<h3>Upgrading constitution<a class="headerlink" href="#upgrading-constitution" title="Permalink to this headline">¶</a></h3>
+<p>If you were using a Lua constitution provided by CCF then you can you can find an equivalent JS constitution in the CCF repo. All of these use the same list of proposable actions from <code class="docutils literal notranslate"><span class="pre">default/actions.js</span></code>, and the same simple implementations of <code class="docutils literal notranslate"><span class="pre">default/validate.js</span></code> and <code class="docutils literal notranslate"><span class="pre">default/apply.js</span></code>, but may have a custom <code class="docutils literal notranslate"><span class="pre">resolve.js</span></code>. For instance if you were previously passing <code class="docutils literal notranslate"><span class="pre">--gov-script</span> <span class="pre">&lt;path/to/&gt;gov_veto.lua</span></code> you should now pass <code class="docutils literal notranslate"><span class="pre">--constitution</span> <span class="pre">&lt;path/to/&gt;default/actions.js</span> <span class="pre">--constitution</span> <span class="pre">&lt;path/to/&gt;default/validate.js</span> <span class="pre">--constitution</span> <span class="pre">&lt;path/to/&gt;default/apply.js</span> <span class="pre">--constitution</span> <span class="pre">&lt;path/to/&gt;veto/resolve.js</span></code>. If you were using <code class="docutils literal notranslate"><span class="pre">operator_gov.lua</span></code> the resolve arg should instead be <code class="docutils literal notranslate"><span class="pre">--constitution</span> <span class="pre">&lt;path/to/&gt;operator/resolve.js</span></code>. The sandbox also has a trivial <code class="docutils literal notranslate"><span class="pre">resolve</span></code> implementation which accepts all proposals in the same way as <code class="docutils literal notranslate"><span class="pre">sanbox_gov.lua</span></code>. This is the version which will be installed in the CCF <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory and used by <code class="docutils literal notranslate"><span class="pre">sandbox.sh</span></code>.</p>
+<p>If you have adapted these constitutions to write your own, you will need to port those adaptations to JS. The default constitutions should provide an example of how to do this. Please raise an issue on GitHub if you experience any problems.</p>
+</section>
+<section id="upgrading-proposals-and-votes">
+<h3>Upgrading proposals and votes<a class="headerlink" href="#upgrading-proposals-and-votes" title="Permalink to this headline">¶</a></h3>
+<p>While the functionality of the proposals remains similar, the name and body schema of many proposals has been modified. Additionally the semantics may be slightly different as the new default proposal actions aim to be idempotent, so will execute successfully in some situations where they would previously have thrown (eg - adding a user who already exists). Similarly the format of the vote body has changed as it now expects a JS script exporting a <code class="docutils literal notranslate"><span class="pre">vote</span></code> function.</p>
+<p>See <a class="reference external" href="https://github.com/microsoft/CCF/discussions/2169#discussioncomment-373490">this Discussion</a> for the mapping between proposal names in Lua and JS. The <code class="docutils literal notranslate"><span class="pre">ccf.proposal_generator</span></code> Python utility can be used to generate proposals. For instance:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -m ccf.proposal_generator --pretty-print set_user bob_cert.pem
+<span class="o">[</span><span class="m">2021</span>-04-06 <span class="m">11</span>:10:00.194<span class="o">]</span> SUCCESS <span class="p">|</span> Writing proposal to ./set_user_proposal.json
+<span class="o">[</span><span class="m">2021</span>-04-06 <span class="m">11</span>:10:00.194<span class="o">]</span> SUCCESS <span class="p">|</span> Wrote vote to ./set_user_vote_for.json
+
+$ cat ./set_user_proposal.json
+<span class="o">{</span>
+    <span class="s2">&quot;actions&quot;</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;set_user&quot;</span>,
+            <span class="s2">&quot;args&quot;</span>: <span class="o">{</span>
+                <span class="s2">&quot;cert&quot;</span>: <span class="s2">&quot;-----BEGIN CERTIFICATE-----\nMIIBrjCCATSgAwIBAgIUGCKB69cgr9N+EEMFvrVu6cInLvgwCgYIKoZIzj0EAwMw\nDjEMMAoGA1UEAwwDYm9iMB4XDTIxMDQwNjEwMDc0OFoXDTIyMDQwNjEwMDc0OFow\nDjEMMAoGA1UEAwwDYm9iMHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEAdgT5JJTVd0x\nyxphNeF8nccwu+Ro1lAEsKEdxzZhD461kv/ecOiqGtHnqlahiHxdQoiAhSfErjpx\n4bCQTCQeZkjZ/7FvOkS9St4uIwUf+/0CU0YxtVLGlSLRep0Sr5nZo1MwUTAdBgNV\nHQ4EFgQUOTRHQS8XOiS0Tf8yh6reB++Fzc8wHwYDVR0jBBgwFoAUOTRHQS8XOiS0\nTf8yh6reB++Fzc8wDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAwNoADBlAjBt\nkHZNFMtWT/79or93gasIuuKItFFjwyMYCMyDq2xUQyX2GtLhVfiVt0Te6hNeVE0C\nMQC7paiA2jrZjJ6qaFbDsJvrY7y9YioIrXA5txGgEEYhlPRDA2+5/5hG+bHLeQbi\noIU=\n-----END CERTIFICATE-----\n&quot;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+
+$ cat ./set_user_vote_for.json
+<span class="o">{</span>
+    <span class="s2">&quot;ballot&quot;</span>: <span class="s2">&quot;export function vote (rawProposal, proposerId) {\n  let proposal = JSON.parse(rawProposal);\n  if (!(&#39;actions&#39; in proposal)) { return false; };\n  let actions = proposal[&#39;actions&#39;];\n  if (actions.length !== 1) { return false; };\n  let action = actions[0];\n  if (!(&#39;name&#39; in action)) { return false; };\n  if (action.name !== &#39;set_user&#39;) { return false; };\n  if (!(&#39;args&#39; in action)) { return false; };\n  let args = action.args;\n  {\n    if (!(&#39;cert&#39; in args)) { return false; };\n    let expected = \&quot;-----BEGIN CERTIFICATE-----\\nMIIBrjCCATSgAwIBAgIUGCKB69cgr9N+EEMFvrVu6cInLvgwCgYIKoZIzj0EAwMw\\nDjEMMAoGA1UEAwwDYm9iMB4XDTIxMDQwNjEwMDc0OFoXDTIyMDQwNjEwMDc0OFow\\nDjEMMAoGA1UEAwwDYm9iMHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEAdgT5JJTVd0x\\nyxphNeF8nccwu+Ro1lAEsKEdxzZhD461kv/ecOiqGtHnqlahiHxdQoiAhSfErjpx\\n4bCQTCQeZkjZ/7FvOkS9St4uIwUf+/0CU0YxtVLGlSLRep0Sr5nZo1MwUTAdBgNV\\nHQ4EFgQUOTRHQS8XOiS0Tf8yh6reB++Fzc8wHwYDVR0jBBgwFoAUOTRHQS8XOiS0\\nTf8yh6reB++Fzc8wDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAwNoADBlAjBt\\nkHZNFMtWT/79or93gasIuuKItFFjwyMYCMyDq2xUQyX2GtLhVfiVt0Te6hNeVE0C\\nMQC7paiA2jrZjJ6qaFbDsJvrY7y9YioIrXA5txGgEEYhlPRDA2+5/5hG+bHLeQbi\\noIU=\\n-----END CERTIFICATE-----\\n\&quot;;\n    if (JSON.stringify(args[&#39;cert&#39;]) !== JSON.stringify(expected)) { return false; };\n  }\n  return true;\n}&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>If you have custom tooling to generate proposals or votes, please use <code class="docutils literal notranslate"><span class="pre">proposal_generator</span></code> as a guide to the format these should now have. Note that if you have a custom constitution, then the format of the proposals themselves is also under your control.</p>
+<p>Finally, these proposals and votes should be submitted to URL paths under <code class="docutils literal notranslate"><span class="pre">/gov/proposals</span></code> rather than <code class="docutils literal notranslate"><span class="pre">/gov/proposals</span></code>.</p>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="member_rpc_api.html" title="previous page">Member RPC API</a>
+    <a class='right-next' id="next-link" href="../audit/index.html" title="next page">Audit</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018, Microsoft Research.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

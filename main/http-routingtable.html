@@ -1,0 +1,535 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTTP Routing Table &#8212; CCF  documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+
+    <script>
+      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
+    </script>
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="index.html">
+  <img src="_static/ccf.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="overview/index.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="build_apps/index.html">
+  Build Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="use_apps/index.html">
+  Use Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="operations/index.html">
+  Operations
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="governance/index.html">
+  Governance
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="audit/index.html">
+  Audit
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="contribute/index.html">
+  Contribute
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="glossary.html">
+  Glossary
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/Microsoft/CCF" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+
+  
+  <h6> Versions </h6>
+  <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+      <option value="http-routingtable.html">main </option>
+      <option value="../ccf-1.0.0/index.html">ccf-1.0.0 </option>
+  </select>
+  
+</nav><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+
+   <h1>HTTP Routing Table</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-/ack"><strong>/ack</strong></a> | 
+   <a href="#cap-/api"><strong>/api</strong></a> | 
+   <a href="#cap-/code"><strong>/code</strong></a> | 
+   <a href="#cap-/commit"><strong>/commit</strong></a> | 
+   <a href="#cap-/config"><strong>/config</strong></a> | 
+   <a href="#cap-/local_tx"><strong>/local_tx</strong></a> | 
+   <a href="#cap-/log"><strong>/log</strong></a> | 
+   <a href="#cap-/memory"><strong>/memory</strong></a> | 
+   <a href="#cap-/network"><strong>/network</strong></a> | 
+   <a href="#cap-/primary"><strong>/primary</strong></a> | 
+   <a href="#cap-/proposals"><strong>/proposals</strong></a> | 
+   <a href="#cap-/quotes"><strong>/quotes</strong></a> | 
+   <a href="#cap-/receipt"><strong>/receipt</strong></a> | 
+   <a href="#cap-/recovery_share"><strong>/recovery_share</strong></a> | 
+   <a href="#cap-/state"><strong>/state</strong></a> | 
+   <a href="#cap-/tx"><strong>/tx</strong></a>
+   </div>
+
+   <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/ack"><td></td><td>
+       <strong>/ack</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="governance/member_rpc_api.html#post--ack"><code class="xref">POST /ack</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="governance/member_rpc_api.html#post--ack-update_state_digest"><code class="xref">POST /ack/update_state_digest</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/api"><td></td><td>
+       <strong>/api</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--api"><code class="xref">GET /api</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--api-metrics"><code class="xref">GET /api/metrics</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/code"><td></td><td>
+       <strong>/code</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--code"><code class="xref">GET /code</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/commit"><td></td><td>
+       <strong>/commit</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#get--commit"><code class="xref">GET /commit</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/config"><td></td><td>
+       <strong>/config</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--config"><code class="xref">GET /config</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/local_tx"><td></td><td>
+       <strong>/local_tx</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--local_tx"><code class="xref">GET /local_tx</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/log"><td></td><td>
+       <strong>/log</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#get--log-private"><code class="xref">GET /log/private</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#get--log-private-historical"><code class="xref">GET /log/private/historical</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#get--log-private-historical-range"><code class="xref">GET /log/private/historical/range</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#get--log-private-historical_receipt"><code class="xref">GET /log/private/historical_receipt</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#get--log-public"><code class="xref">GET /log/public</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#post--log-private"><code class="xref">POST /log/private</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#post--log-private-admin_only"><code class="xref">POST /log/private/admin_only</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#post--log-private-anonymous"><code class="xref">POST /log/private/anonymous</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#post--log-private-prefix_cert"><code class="xref">POST /log/private/prefix_cert</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#post--log-private-raw_text-id"><code class="xref">POST /log/private/raw_text/{id}</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#post--log-public"><code class="xref">POST /log/public</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#delete--log-private"><code class="xref">DELETE /log/private</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#delete--log-public"><code class="xref">DELETE /log/public</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/memory"><td></td><td>
+       <strong>/memory</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--memory"><code class="xref">GET /memory</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/network"><td></td><td>
+       <strong>/network</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--network"><code class="xref">GET /network</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--network-nodes"><code class="xref">GET /network/nodes</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--network-nodes-primary"><code class="xref">GET /network/nodes/primary</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--network-nodes-self"><code class="xref">GET /network/nodes/self</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--network-nodes-node_id"><code class="xref">GET /network/nodes/{node_id}</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/primary"><td></td><td>
+       <strong>/primary</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#head--primary"><code class="xref">HEAD /primary</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/proposals"><td></td><td>
+       <strong>/proposals</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="governance/member_rpc_api.html#get--proposals-proposal_id"><code class="xref">GET /proposals/{proposal_id}</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="governance/member_rpc_api.html#get--proposals-proposal_id-actions"><code class="xref">GET /proposals/{proposal_id}/actions</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="governance/member_rpc_api.html#get--proposals-proposal_id-ballots-member_id"><code class="xref">GET /proposals/{proposal_id}/ballots/{member_id}</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="governance/member_rpc_api.html#post--proposals"><code class="xref">POST /proposals</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="governance/member_rpc_api.html#post--proposals-proposal_id-ballots"><code class="xref">POST /proposals/{proposal_id}/ballots</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="governance/member_rpc_api.html#post--proposals-proposal_id-withdraw"><code class="xref">POST /proposals/{proposal_id}/withdraw</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/quotes"><td></td><td>
+       <strong>/quotes</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--quotes"><code class="xref">GET /quotes</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--quotes-self"><code class="xref">GET /quotes/self</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/receipt"><td></td><td>
+       <strong>/receipt</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#get--receipt"><code class="xref">GET /receipt</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/recovery_share"><td></td><td>
+       <strong>/recovery_share</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="governance/member_rpc_api.html#get--recovery_share"><code class="xref">GET /recovery_share</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="governance/member_rpc_api.html#post--recovery_share"><code class="xref">POST /recovery_share</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/state"><td></td><td>
+       <strong>/state</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="operations/operator_rpc_api.html#get--state"><code class="xref">GET /state</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/tx"><td></td><td>
+       <strong>/tx</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="use_apps/rpc_api.html#get--tx"><code class="xref">GET /tx</code></a></td><td>
+       <em>null</em></td></tr>
+   </table>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018, Microsoft Research.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

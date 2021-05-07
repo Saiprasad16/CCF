@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Proposing and Voting for a Proposal &#8212; CCF  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Opening a Network" href="open_network.html" />
+    <link rel="prev" title="Governance" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/ccf.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../overview/index.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../build_apps/index.html">
+  Build Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../use_apps/index.html">
+  Use Apps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../operations/index.html">
+  Operations
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Governance
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../audit/index.html">
+  Audit
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contribute/index.html">
+  Contribute
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../glossary.html">
+  Glossary
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/Microsoft/CCF" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Proposing and Voting for a Proposal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="open_network.html">
+   Opening a Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="accept_recovery.html">
+   Accepting Recovery and Submitting Shares
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="common_member_operations.html">
+   Common Governance Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="adding_member.html">
+   Adding New Members
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hsm_keys.html">
+   Using Member Keys Stored in HSM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="member_rpc_api.html">
+   Member RPC API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="js_gov.html">
+   JavaScript Governance
+  </a>
+ </li>
+</ul>
+
+  </div>
+
+  
+  <h6> Versions </h6>
+  <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+      <option value="proposals.html">main </option>
+      <option value="../../ccf-1.0.0/governance/proposals.html">ccf-1.0.0 </option>
+  </select>
+  
+</nav><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-proposal">
+   Creating a Proposal
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-proposals-in-python">
+     Creating Proposals in Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submitting-a-new-proposal">
+   Submitting a New Proposal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#displaying-proposals">
+   Displaying Proposals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#withdrawing-a-proposal">
+   Withdrawing a Proposal
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/governance/proposals.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="proposing-and-voting-for-a-proposal">
+<h1>Proposing and Voting for a Proposal<a class="headerlink" href="#proposing-and-voting-for-a-proposal" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="js_gov.html"><span class="doc">JavaScript Governance</span></a> for pointers on converting from Lua to JS.</p>
+</div>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Proposals are submitted as JSON documents, which if resolved successfully are applied atomically to the KV state.</p>
+<p>Ballots are submitted as JavaScript modules exporting a single <code class="docutils literal notranslate"><span class="pre">vote()</span></code> function, executed transactionally, and are able to read from the current KV state but not write to it.
+Each vote script is given the proposal as a JSON document, typically containing list of actions, and returns a Boolean value indicating whether it supports or rejects it.</p>
+<p>Any member can submit a new proposal. All members can then vote, once at most, on this proposal using its unique proposal id.
+The proposer has the ability to <cite>withdraw</cite> a proposal as long as it is open.</p>
+<p>Each time a vote is submitted, all vote ballots for this proposal are re-executed on the current state to determine whether they are <cite>for</cite> or <cite>against</cite> the proposal.
+This vote tally is passed to the <code class="docutils literal notranslate"><span class="pre">resolve()</span></code> call in the <a class="reference internal" href="../glossary.html#term-Constitution"><span class="xref std std-term">Constitution</span></a>, which determines whether the proposal is accepted or remains open.
+Once a proposal is accepted under the rules of the <a class="reference internal" href="../glossary.html#term-Constitution"><span class="xref std std-term">Constitution</span></a>, it is executed via <code class="docutils literal notranslate"><span class="pre">apply()</span></code> and its effects are applied to the state and recorded in the ledger.</p>
+<p>For transparency and auditability, all governance operations (including votes) are recorded in plaintext in the ledger and members are required to sign their requests.</p>
+<script>
+mermaid.initialize({startOnLoad:true});
+
+// Remove height from all mermaid diagrams
+window.addEventListener(
+  'load',
+  function() {
+    let nodes = document.querySelectorAll('.mermaid');
+    for (let i = 0; i < nodes.length; i++) {
+      const element = nodes[i];
+      const svg = element.firstChild;
+      svg.removeAttribute('height');
+    }
+  },
+  false
+);
+</script><div class="mermaid">
+            sequenceDiagram
+    participant Member 0
+    participant Member 1
+    participant MemberFrontend
+    participant Constitution
+
+    Note over MemberFrontend, Constitution: CCF
+    Member 0-&gt;&gt;+MemberFrontend: Submit Proposal to /gov/proposals
+    MemberFrontend-&gt;&gt;+Constitution: call validate(Proposal)
+    Constitution--&gt;&gt;-MemberFrontend: no exception
+    MemberFrontend-&gt;&gt;+Constitution: call resolve(Proposal, {})
+    Constitution--&gt;&gt;-MemberFrontend: not enough votes, return Proposal is Open
+    MemberFrontend--&gt;&gt;-Member 0: Proposal is Open
+
+    Member 1-&gt;&gt;+MemberFrontend: Submit Ballot containing vote() to /gov/proposals/ProposalID/ballots
+    MemberFrontend-&gt;&gt;MemberFrontend: evaluate vote(Proposal, KV State) to boolean Vote
+    MemberFrontend-&gt;&gt;+Constitution: call resolve(Proposal, {Member 1: Vote})
+    Constitution--&gt;&gt;-MemberFrontend: enough positive votes, return Proposal is Accepted
+    MemberFrontend-&gt;&gt;+Constitution: call apply(Proposal) to perform side-effects
+    Constitution--&gt;&gt;-MemberFrontend: no exception
+    MemberFrontend--&gt;&gt;-Member 1: Proposal is Accepted, has successfully been applied
+        </div></section>
+<section id="creating-a-proposal">
+<h2>Creating a Proposal<a class="headerlink" href="#creating-a-proposal" title="Permalink to this headline">¶</a></h2>
+<p>For custom proposals with multiple actions and precise conditional requirements you will need to write the proposal script by hand.
+For simple proposals there is a helper script in the CCF Python package - <code class="docutils literal notranslate"><span class="pre">proposal_generator.py</span></code>.
+This can be used to create proposals for common operations like adding members and users, without writing any JSON.
+It also produces sample vote scripts, which validate that the executed proposed actions exactly match what is expected.
+These sample proposals and votes can be used as a syntax and API reference for producing more complex custom proposals.</p>
+<p>Assuming the CCF Python package has been installed in the current Python environment, the proposal generator can be invoked directly as <code class="docutils literal notranslate"><span class="pre">ccf.proposal_generator</span></code>. With no further argument it will print help text, including the list of possible actions as subcommands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>usage: proposal_generator.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-po PROPOSAL_OUTPUT_FILE<span class="o">]</span> <span class="o">[</span>-vo VOTE_OUTPUT_FILE<span class="o">]</span> <span class="o">[</span>-pp<span class="o">]</span> <span class="o">[</span>-i<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
+                            <span class="o">{</span>add_node_code,remove_ca_cert_bundle,remove_js_app,remove_jwt_issuer,remove_member,remove_node,remove_node_code,remove_user,set_ca_cert_bundle,set_constitution,set_js_app,set_jwt_issuer,set_jwt_public_signing_keys,set_member,set_member_data,set_recovery_threshold,set_user,set_user_data,transition_node_to_trusted,transition_service_to_open,trigger_ledger_rekey,trigger_recovery_shares_refresh<span class="o">}</span>
+</pre></div>
+</div>
+<p>Additional detail is available from the <code class="docutils literal notranslate"><span class="pre">--help</span></code> option. You can also find the script in a checkout of CCF:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python CCF/python/ccf/proposal_generator.py
+</pre></div>
+</div>
+<p>Some of these subcommands require additional arguments, such as the node ID or user certificate to add to the service. Additional options allow the generated votes and proposals to be redirected to other files or pretty-printed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -m ccf.proposal_generator transition_node_to_trusted 6d566123a899afaea977c5fc0f7a2a9fef33f2946fbc4abefbc3e10ee597343f
+SUCCESS <span class="p">|</span> Writing proposal to ./trust_node_proposal.json
+SUCCESS <span class="p">|</span> Wrote vote to ./trust_node_vote_for.json
+
+$ cat trust_node_proposal.json
+<span class="o">{</span><span class="s2">&quot;actions&quot;</span>: <span class="o">[{</span><span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;transition_node_to_trusted&quot;</span>, <span class="s2">&quot;args&quot;</span>: <span class="o">{</span><span class="s2">&quot;node_id&quot;</span>: <span class="s2">&quot;6d566123a899afaea977c5fc0f7a2a9fef33f2946fbc4abefbc3e10ee597343f&quot;</span><span class="o">}}]}</span>
+
+$ python -m ccf.proposal_generator --pretty-print --proposal-output-file add_pedro.json --vote-output-file vote_for_pedro.json set_user pedro_cert.pem
+SUCCESS <span class="p">|</span> Writing proposal to ./add_pedro.json
+SUCCESS <span class="p">|</span> Wrote vote to ./vote_for_pedro.json
+
+$ cat add_pedro.json
+<span class="o">{</span>
+  <span class="s2">&quot;actions&quot;</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;set_user&quot;</span>,
+      <span class="s2">&quot;args&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;cert&quot;</span>: <span class="s2">&quot;-----BEGIN CERTIFICATE-----\nMIIBsjCCATigAwIBAgIUOiTU32JZsA0dSv64hW2mrKM0phEwCgYIKoZIzj0EAwMw\nEDEOMAwGA1UEAwwFdXNlcjIwHhcNMjEwNDE0MTUyODMyWhcNMjIwNDE0MTUyODMy\nWjAQMQ4wDAYDVQQDDAV1c2VyMjB2MBAGByqGSM49AgEGBSuBBAAiA2IABBFf+FD0\nUGIyJubt8j+f8+/BP7IY6G144yF/vBNe7CJpNNRyiMZzEyN6wmEKIjsn3gU36A6E\nqNYBlbYbXD1kzlw4q/Pe/Wl3o237p8Es6LD1e1MDUFp2qUcNA6vari6QLKNTMFEw\nHQYDVR0OBBYEFDuGVragGSHoIrFA44kQRg/SKIcFMB8GA1UdIwQYMBaAFDuGVrag\nGSHoIrFA44kQRg/SKIcFMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAw\nZQIxAPx54LaqQevKrcZIr7QSCZKGFJgSxfVxovSfEqTMD+sKdWzNTqJtJ1SDav1v\nImA4iwIwBsrdevSQj4U2ynXiTJKljviDnyc47ktJVkg/Ppq5cMcEZHO4Q0H/Wq3H\nlUuVImyR\n-----END CERTIFICATE-----\n&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>These proposals and votes should be sent as the body of HTTP requests as described below.</p>
+<section id="creating-proposals-in-python">
+<h3>Creating Proposals in Python<a class="headerlink" href="#creating-proposals-in-python" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ccf.proposal_generator</span></code> can also be imported and used in a Python application instead of as a command-line tool.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ccf.proposal_generator</span>
+</pre></div>
+</div>
+<p>The proposal generation functions return dictionaries that can be submitted to a <code class="docutils literal notranslate"><span class="pre">CCFClient</span></code>.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">proposal</span><span class="p">,</span> <span class="n">vote</span> <span class="o">=</span> <span class="n">ccf</span><span class="o">.</span><span class="n">proposal_generator</span><span class="o">.</span><span class="n">transition_service_to_open</span><span class="p">()</span>
+
+<span class="n">member_client</span> <span class="o">=</span> <span class="n">ccf</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">CCFClient</span><span class="p">(</span>
+    <span class="n">host</span><span class="p">,</span>
+    <span class="n">port</span><span class="p">,</span>
+    <span class="n">ca</span><span class="p">,</span>
+    <span class="n">session_auth</span><span class="o">=</span><span class="n">ccf</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">Identity</span><span class="p">(</span><span class="n">member_key</span><span class="p">,</span> <span class="n">member_cert</span><span class="p">,</span> <span class="s2">&quot;member&quot;</span><span class="p">),</span>
+    <span class="n">signing_auth</span><span class="o">=</span><span class="n">ccf</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">Identity</span><span class="p">(</span><span class="n">member_key</span><span class="p">,</span> <span class="n">member_cert</span><span class="p">,</span> <span class="s2">&quot;member&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">member_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s2">&quot;/gov/proposals&quot;</span><span class="p">,</span>
+    <span class="n">body</span><span class="o">=</span><span class="n">proposal</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>You may wish to write these proposals to files so they can be examined or modified further. These proposal files can be submitted directly — <code class="docutils literal notranslate"><span class="pre">CCFClient</span></code> will treat string request bodies beginning with an <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> as file paths in the same way that <code class="docutils literal notranslate"><span class="pre">curl</span></code> does, and use the content of the file when sending.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;my_open_network_proposal.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">proposal</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># The contents of `my_open_network_proposal.json` are submitted as the request body.</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">member_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s2">&quot;/gov/proposals&quot;</span><span class="p">,</span>
+    <span class="n">body</span><span class="o">=</span><span class="s2">&quot;@my_open_network_proposal.json&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="submitting-a-new-proposal">
+<h2>Submitting a New Proposal<a class="headerlink" href="#submitting-a-new-proposal" title="Permalink to this headline">¶</a></h2>
+<p>Assuming that 3 members (<code class="docutils literal notranslate"><span class="pre">member1</span></code>, <code class="docutils literal notranslate"><span class="pre">member2</span></code> and <code class="docutils literal notranslate"><span class="pre">member3</span></code>) are already registered in the CCF network and that the sample constitution is used, a member can submit a new proposal using <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/gov/proposals</span></code> and vote using <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/gov/proposals/{proposal_id}/ballots</span></code>.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">member1</span></code> may submit a proposal to add a new member (<code class="docutils literal notranslate"><span class="pre">member4</span></code>) to the consortium:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat set_member.json
+<span class="o">{</span>
+  <span class="s2">&quot;actions&quot;</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;set_member&quot;</span>,
+      <span class="s2">&quot;args&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;cert&quot;</span>: <span class="s2">&quot;-----BEGIN CERTIFICATE-----\nMIIBeDCCAR+gAwIBAgIUNIlSzogSRYEIFzXZkt/8+yPP1mkwCgYIKoZIzj0EAwIw\nEjEQMA4GA1UEAwwHbWVtYmVyNTAeFw0yMTA0MTQxNTI5MDdaFw0yMjA0MTQxNTI5\nMDdaMBIxEDAOBgNVBAMMB21lbWJlcjUwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\nAATQ31dh+lbI9wtmEA5B9uvwMpchayuC6y2ODpvdikpW22YEEgMOHRTz9C1ouyA6\nDU/B8e44/Ix8EOyZ/o+o/x4uo1MwUTAdBgNVHQ4EFgQUkw5qTP11HKXElw/1PgS9\nczAI6kwwHwYDVR0jBBgwFoAUkw5qTP11HKXElw/1PgS9czAI6kwwDwYDVR0TAQH/\nBAUwAwEB/zAKBggqhkjOPQQDAgNHADBEAiBKK27btVObhaY3dNaRfTE5EPZeUvFQ\nysnx5xOcn7MGIAIgErGPvJeOD1mVKnHIsJ7JWpxbHCOWkiWuX5uPIX8didQ=\n-----END CERTIFICATE-----\n&quot;</span>,
+        <span class="s2">&quot;encryption_pub_key&quot;</span>: <span class="s2">&quot;-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwHGQBecZimsPBmDJP7Bb\nSEtn3n2ee8luvyYWDgmxH2+GCE9bBdDrRu4qibGk/itrJ0ezIXChdszTQk1MdG0a\noWa4LbV2wTT7wRaqla+QaVI0VUAFFWuZkRlrTNvD6rizB7YBC9Qy54FqSmWfqbyK\nZF4gsnODPo78CABuiGvqASKfi9cfhJYARsXwFQNDTj+M9gXzThwC+oT5etOHmLVX\nxrs4mEmKaVgRS/qjedqqq2WSseteWDTg72LuSUgxC3OMBD+E0xQfOAOBXsi7EVqv\naPLlDSQJBG5tQDltz+kspUs3WWcP0UMY/mCvWeFtpP2wcaH5Y60PdYeOnSDYfCB5\nKwIDAQAB\n-----END PUBLIC KEY-----\n&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+
+$ scurl.sh https://&lt;ccf-node-address&gt;/gov/proposals --cacert network_cert --key member1_privk --cert member1_cert --data-binary @add_member.json -H <span class="s2">&quot;content-type: application/json&quot;</span>
+<span class="o">{</span>
+  <span class="s2">&quot;ballot_count&quot;</span>: <span class="m">0</span>,
+  <span class="s2">&quot;proposal_id&quot;</span>: <span class="s2">&quot;d4ec2de82267f97d3d1b464020af0bd3241f1bedf769f0fee73cd00f08e9c7fd&quot;</span>,
+  <span class="s2">&quot;proposer_id&quot;</span>: <span class="s2">&quot;52af2620fa1b005a93d55d7d819a249ee2cb79f5262f54e8db794c5281a0ce73&quot;</span>,
+  <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;Open&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Here a new proposal has successfully been created, and nobody has yet voted for it. The proposal is in state <code class="docutils literal notranslate"><span class="pre">Open</span></code>, meaning it will can receive additional votes. Members can then vote to accept or reject the proposal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat vote_reject.json
+<span class="o">{</span>
+  <span class="s2">&quot;ballot&quot;</span>: <span class="s2">&quot;export function vote (proposal, proposerId) { return false }&quot;</span>
+<span class="o">}</span>
+
+$ cat vote_accept.json
+<span class="o">{</span>
+  <span class="s2">&quot;ballot&quot;</span>: <span class="s2">&quot;export function vote (proposal, proposerId) { return true }&quot;</span>
+<span class="o">}</span>
+
+
+<span class="c1"># Member 1 approves the proposal (votes in favour: 1/3)</span>
+$ scurl.sh https://&lt;ccf-node-address&gt;/gov/proposals/d4ec2de82267f97d3d1b464020af0bd3241f1bedf769f0fee73cd00f08e9c7fd/ballots --cacert network_cert --key member1_privk --cert member1_cert --data-binary @vote_accept.json -H <span class="s2">&quot;content-type: application/json&quot;</span>
+<span class="o">{</span>
+  <span class="s2">&quot;ballot_count&quot;</span>: <span class="m">1</span>,
+  <span class="s2">&quot;proposal_id&quot;</span>: <span class="s2">&quot;d4ec2de82267f97d3d1b464020af0bd3241f1bedf769f0fee73cd00f08e9c7fd&quot;</span>,
+  <span class="s2">&quot;proposer_id&quot;</span>: <span class="s2">&quot;52af2620fa1b005a93d55d7d819a249ee2cb79f5262f54e8db794c5281a0ce73&quot;</span>,
+  <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;Open&quot;</span>
+<span class="o">}</span>
+
+
+<span class="c1"># Member 2 rejects the proposal (votes in favour: 1/3)</span>
+$ scurl.sh https://&lt;ccf-node-address&gt;/gov/proposals/d4ec2de82267f97d3d1b464020af0bd3241f1bedf769f0fee73cd00f08e9c7fd/ballots --cacert network_cert --key member2_privk --cert member2_cert --data-binary @vote_reject.json -H <span class="s2">&quot;content-type: application/json&quot;</span>
+<span class="o">{</span>
+  <span class="s2">&quot;ballot_count&quot;</span>: <span class="m">2</span>,
+  <span class="s2">&quot;proposal_id&quot;</span>: <span class="s2">&quot;d4ec2de82267f97d3d1b464020af0bd3241f1bedf769f0fee73cd00f08e9c7fd&quot;</span>,
+  <span class="s2">&quot;proposer_id&quot;</span>: <span class="s2">&quot;52af2620fa1b005a93d55d7d819a249ee2cb79f5262f54e8db794c5281a0ce73&quot;</span>,
+  <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;Open&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># Member 3 accepts the proposal (votes in favour: 2/3)</span>
+$ scurl.sh https://&lt;ccf-node-address&gt;/gov/proposals/d4ec2de82267f97d3d1b464020af0bd3241f1bedf769f0fee73cd00f08e9c7fd/ballots --cacert network_cert --key member3_privk --cert member3_cert --data-binary @vote_accept.json -H <span class="s2">&quot;content-type: application/json&quot;</span>
+<span class="o">{</span>
+  <span class="s2">&quot;ballot_count&quot;</span>: <span class="m">3</span>,
+  <span class="s2">&quot;proposal_id&quot;</span>: <span class="s2">&quot;d4ec2de82267f97d3d1b464020af0bd3241f1bedf769f0fee73cd00f08e9c7fd&quot;</span>,
+  <span class="s2">&quot;proposer_id&quot;</span>: <span class="s2">&quot;52af2620fa1b005a93d55d7d819a249ee2cb79f5262f54e8db794c5281a0ce73&quot;</span>,
+  <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;Accepted&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># As a majority of members have accepted the proposal, member 4 is added to the consortium</span>
+</pre></div>
+</div>
+<p>As soon as <code class="docutils literal notranslate"><span class="pre">member3</span></code> accepts the proposal, a majority (2 out of 3) of members has been reached and the proposal completes, successfully adding <code class="docutils literal notranslate"><span class="pre">member4</span></code>. The response shows this, as the proposal’s state is now <code class="docutils literal notranslate"><span class="pre">Accepted</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once a new member has been accepted to the consortium, the new member must acknowledge that it is active by sending a <code class="docutils literal notranslate"><span class="pre">/gov/ack</span></code> request. See <a class="reference internal" href="adding_member.html#activating-a-new-member"><span class="std std-ref">Activating a New Member</span></a>.</p>
+</div>
+</section>
+<section id="displaying-proposals">
+<h2>Displaying Proposals<a class="headerlink" href="#displaying-proposals" title="Permalink to this headline">¶</a></h2>
+<p>The details of pending proposals, can be queried from the service by calling <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/gov/proposals/{proposal_id}</span></code>. For example, after accepting the proposal above:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ scurl.sh https://&lt;ccf-node-address&gt;/gov/proposals/d4ec2de82267f97d3d1b464020af0bd3241f1bedf769f0fee73cd00f08e9c7fd --cacert networkcert.pem --key member3_privk.pem --cert member3_cert.pem -H <span class="s2">&quot;content-type: application/json&quot;</span> -X GET
+<span class="o">{</span>
+  <span class="s2">&quot;ballots&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;0d8866bf4623a685963f3c087cd6fdcdf48fc483d774f7fc28bf428e31755aaa&quot;</span>: <span class="s2">&quot;export function vote (proposal, proposerId) { return true }&quot;</span>,
+    <span class="s2">&quot;466cc43f0cd17df4b49ded4b833f7bbba43b15ebee5be896d91e823fcce96a69&quot;</span>: <span class="s2">&quot;export function vote (proposal, proposerId) { return true }&quot;</span>,
+    <span class="s2">&quot;fe1b9b511fb3cf3ca3a1289b0d44db83a80dee8a54492f29467c52ebef9dbe40&quot;</span>: <span class="s2">&quot;export function vote (proposal, proposerId) { return false }&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;final_votes&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;0d8866bf4623a685963f3c087cd6fdcdf48fc483d774f7fc28bf428e31755aaa&quot;</span>: true,
+    <span class="s2">&quot;466cc43f0cd17df4b49ded4b833f7bbba43b15ebee5be896d91e823fcce96a69&quot;</span>: true,
+    <span class="s2">&quot;fe1b9b511fb3cf3ca3a1289b0d44db83a80dee8a54492f29467c52ebef9dbe40&quot;</span>: <span class="nb">false</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;proposer_id&quot;</span>: <span class="s2">&quot;0d8866bf4623a685963f3c087cd6fdcdf48fc483d774f7fc28bf428e31755aaa&quot;</span>,
+  <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;Accepted&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</section>
+<section id="withdrawing-a-proposal">
+<h2>Withdrawing a Proposal<a class="headerlink" href="#withdrawing-a-proposal" title="Permalink to this headline">¶</a></h2>
+<p>At any stage during the voting process, before the proposal is accepted, the proposing member may decide to withdraw a pending proposal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ scurl.sh https://&lt;ccf-node-address&gt;/gov/proposals/d4ec2de82267f97d3d1b464020af0bd3241f1bedf769f0fee73cd00f08e9c7fd/withdraw --cacert networkcert.pem --key member1_privk.pem --cert member1_cert.pem -H <span class="s2">&quot;content-type: application/json&quot;</span>
+<span class="o">{</span>
+  <span class="s2">&quot;ballot_count&quot;</span>: <span class="m">1</span>,
+  <span class="s2">&quot;proposal_id&quot;</span>: <span class="s2">&quot;d4ec2de82267f97d3d1b464020af0bd3241f1bedf769f0fee73cd00f08e9c7fd&quot;</span>,
+  <span class="s2">&quot;proposer_id&quot;</span>: <span class="s2">&quot;52af2620fa1b005a93d55d7d819a249ee2cb79f5262f54e8db794c5281a0ce73&quot;</span>,
+  <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;Withdrawn&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>This means future votes will be rejected, and the proposal will never be accepted. However it remains visible as a proposal so members can easily audit historic proposals.</p>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Governance</a>
+    <a class='right-next' id="next-link" href="open_network.html" title="next page">Opening a Network</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018, Microsoft Research.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
